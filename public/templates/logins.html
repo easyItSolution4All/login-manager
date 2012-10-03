@@ -1,0 +1,24 @@
+<!-- Intro -->
+<div class="in author">
+	<h1>LOGINS</h1>
+	<p>Create and manage login locations, usernames, passwords and other related info.</p>
+</div>
+
+<div class="line"></div>
+
+<div class="in">			
+	<table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main" >
+		<tr>
+			<th>LOCATION</th>
+			<th>USER</th>
+			<th>PROTOCOL</th>
+			<th class="actions">ACTIONS</th>
+		</tr>
+		<tr ng-repeat="login in logins">
+			<td>{{login.location}}</td>
+			<td>{{login.user}}</td>
+			<td>{{login.protocol}}</td>
+			<td><a href="#">Edit</a><span class="v-line">|</span><a href="#" class="delete">Delete</a></td>
+		</tr>
+	</table>				
+</div>

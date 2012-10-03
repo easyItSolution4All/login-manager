@@ -1,0 +1,33 @@
+var App = angular.module('Login Manager', ['ngResource']);
+
+App.config(
+	['$locationProvider', function($location) {
+		$location.html5Mode(true); //now there won't be a hashbang within URLs for browers that support HTML5 history
+	}]
+);
+App.config(
+	['$routeProvider', function($routes) {
+		$routes.when('/', {
+			templateUrl: '/templates/logins.html',
+			controller: Logins.ListController
+		});
+		$routes.when('/logins/create', {
+			templateUrl: '/templates/logins/create.html',
+			controller: Logins.CreateController
+		});
+		$routes.when('/clients', {
+			templateUrl: '/templates/clients.html',
+			controller: Clients.ListController
+		});
+		$routes.when('/clients/create', {
+			templateUrl: '/templates/clients/create.html',
+			controller: Clients.CreateController
+		});
+		$routes.when('/404', {
+			templateUrl: '/templates/404.html'
+		});
+		$routes.otherwise({
+			redirectTo: '/404'
+		});
+	}]
+);

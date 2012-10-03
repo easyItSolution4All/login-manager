@@ -1,0 +1,24 @@
+<!-- Intro -->
+<div class="in author">
+	<h1>CLIENTS</h1>
+	<p>Create and manage clients and their projects.</p>
+
+	<div class="actions">
+		<a href="/clients/create" class="button">CREATE CLIENT</a>
+	</div>
+</div>
+
+<div class="line"></div>
+
+<div class="in">		
+	<table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main" >
+		<tr>
+			<th>CLIENT NAME</th>
+			<th class="actions">ACTIONS</th>
+		</tr>
+		<tr ng-repeat="client in clients">
+			<td>{{client.name}}</td>
+			<td><a href="#">Edit</a><span class="v-line">|</span><a href="#" class="delete">Delete</a></td>
+		</tr>
+	</table>
+</div>
