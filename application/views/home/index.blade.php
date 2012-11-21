@@ -6,8 +6,8 @@
 	{{ HTML::style('/css/main.css') }}
 	{{ HTML::script('/js/angular.min.js') }}
 	{{ HTML::script('/js/angular-resource.min.js') }}
+	{{ HTML::script('/js/services.js') }}
 	{{ HTML::script('/js/app.js') }}
-	{{ HTML::script('/js/models/client.js') }}
 	{{ HTML::script('/js/controllers/logins.js') }}
 	{{ HTML::script('/js/controllers/clients.js') }}
 </head>

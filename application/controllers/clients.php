@@ -5,11 +5,9 @@ class Clients_Controller extends Base_Controller
 	{
 		return Response::eloquent(Client::all());
 	}
-
+	
 	public function post_index()
 	{
-		$data = get_object_vars(Input::json());
-		
-		Client::create($data);
+		Client::create($this->_data());
 	}
 }

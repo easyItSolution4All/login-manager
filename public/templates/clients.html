@@ -10,7 +10,7 @@
 
 <div class="line"></div>
 
-<div class="in">		
+<div class="in">
 	<table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main" >
 		<tr>
 			<th>CLIENT NAME</th>
@@ -18,7 +18,7 @@
 		</tr>
 		<tr ng-repeat="client in clients">
 			<td>{{client.name}}</td>
-			<td><a href="#">Edit</a><span class="v-line">|</span><a href="#" class="delete">Delete</a></td>
+			<td><a href="/clients/edit/{{client.id}}">Edit</a><span class="v-line">|</span><a href="/clients/delete/{{client.id}}" ng-click="delete($event)">Delete</a></td>
 		</tr>
 	</table>
 </div>

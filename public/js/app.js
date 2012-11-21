@@ -1,4 +1,4 @@
-var App = angular.module('Login Manager', ['ngResource']);
+var App = angular.module('Login Manager', ['ngResource', 'Services']);
 
 App.config(
 	['$locationProvider', function($location) {

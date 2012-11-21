@@ -1,8 +1,17 @@
 var Clients = {
-	ListController: ['$scope', 'Client', function($scope, Client) {
+	ListController: function($scope, Client) {
+		$scope.delete = function(event) {
+			event.stopPropagation();
+			event.preventDefault();
+			
+			Client.delete({id: this.client.id});
+			
+			return false;
+		};
+
 		$scope.clients = Client.query();
-	}],
-	CreateController: ['$scope', '$location', 'Client', function($scope, $location, Client) {
+	},
+	CreateController: function($scope, $location, Client) {
 		$scope.client = new Client;
 		
 		$scope.submitClient = function() {
@@ -17,5 +26,6 @@ var Clients = {
 			
 			return false;
 		};
-	}]
+	}
 }
+
