@@ -1,4 +1,4 @@
-var App = angular.module('Login Manager', ['ngResource', 'Services']);
+var App = angular.module('Login Manager', ['ngResource', 'Services', 'Directives']);
 
 App.config(
 	['$locationProvider', function($location) {
@@ -15,13 +15,17 @@ App.config(
 			templateUrl: '/templates/logins/create.html',
 			controller: Logins.CreateController
 		});
+		$routes.when('/clients/create', {
+			templateUrl: '/templates/clients/form.html',
+			controller: Clients.CreateController
+		});
 		$routes.when('/clients', {
 			templateUrl: '/templates/clients.html',
 			controller: Clients.ListController
 		});
-		$routes.when('/clients/create', {
-			templateUrl: '/templates/clients/create.html',
-			controller: Clients.CreateController
+		$routes.when('/clients/:clientId', {
+			templateUrl: '/templates/clients/form.html',
+			controller: Clients.EditController
 		});
 		$routes.when('/404', {
 			templateUrl: '/templates/404.html'

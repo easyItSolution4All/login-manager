@@ -1,0 +1,23 @@
+<!-- Intro -->
+<div class="in author">
+	<h1>{{action}} CLIENT</h1>
+	<p>{{action}} a client to add projects and logins.</p>
+</div>
+
+<div class="line"></div>
+
+<div class="in forms">
+	<form method="post" ng-submit="saveClient(this)">
+		<p>
+			<strong>CLIENT NAME</strong><br />
+			<input type="text" name="name" class="box" ng-model="client.name" />
+		</p>
+		<p>
+			<strong>NOTES</strong><br />
+			<textarea type="text" name="notes" class="box" ng-model="client.notes" rows="5"></textarea>
+		</p>
+		<p>
+			<input type="submit" tabindex="5" class="button" value="SAVE" />
+		</p>
+	</form>
+</div>

@@ -1,10 +1,9 @@
 var Services = angular.module('Services', ['ngResource']);
 
 Services.factory('Client', ['$resource', function($resource) {
-	return $resource('/clients/:action/:id', {action: '@action', id: '@id'}, {
-	  create: {method: 'POST', params: { action: 'create' }},
-	  destroy: {method: 'DELETE', params: { action: 'delete' }},
-	  query: {method: 'GET', isArray: true }
+	return $resource('/clients/:id', {id: '@id'}, {
+	  create: { method: 'POST', params: { action: 'create' }},
+	  destroy: { method: 'DELETE' }
   });
 }]);
 

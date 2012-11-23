@@ -8,6 +8,7 @@
 	{{ HTML::script('/js/angular-resource.min.js') }}
 	{{ HTML::script('/js/services.js') }}
 	{{ HTML::script('/js/app.js') }}
+	{{ HTML::script('/js/directives.js') }}
 	{{ HTML::script('/js/controllers/logins.js') }}
 	{{ HTML::script('/js/controllers/clients.js') }}
 </head>
@@ -18,11 +19,7 @@
 		
 		<!-- Navigation -->
 		<div class="navigation">
-			<ul>
-				<li><a href="/">LOGINS</a></li>
-				<li><a href="/projects">PROJECTS</a></li>
-				<li><a href="/clients" class="active">CLIENTS</a></li>
-			</ul>
+			<ul lm-menu></ul>
 			
 			<div id="searchform">
 				<form method="get" action="">

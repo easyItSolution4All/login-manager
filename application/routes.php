@@ -31,7 +31,12 @@
 |		});
 |
 */
-Route::controller(Controller::detect());
+
+Route::get('/', array('uses' => 'logins@index'));
+Route::get('clients', array('uses' => 'clients@index'));
+Route::get('clients/(:num)', array('uses' => 'clients@view'));
+Route::post('clients/(:num)', array('uses' => 'clients@update'));
+Route::delete('clients/(:num)', array('uses' => 'clients@index'));
 
 /*
 |--------------------------------------------------------------------------

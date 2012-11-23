@@ -5,9 +5,24 @@ class Clients_Controller extends Base_Controller
 	{
 		return Response::eloquent(Client::all());
 	}
+
+	public function get_view($id) {
+		return Response::eloquent(Client::find($id));
+	}
+	
+	public function post_update($id) {
+		$client = Client::find($id);
+		$client->fill($this->_data());
+		$client->save();
+	}
 	
 	public function post_index()
 	{
 		Client::create($this->_data());
+	}
+
+	public function delete_index($id) {
+		$client = Client::find($id);
+		if ($client) $client->delete();
 	}
 }
