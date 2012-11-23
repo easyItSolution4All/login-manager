@@ -5,7 +5,7 @@ class Clients_Controller extends Base_Controller
 	{
 		return Response::eloquent(Client::all());
 	}
-
+	
 	public function get_view($id) {
 		return Response::eloquent(Client::find($id));
 	}

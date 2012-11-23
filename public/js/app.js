@@ -23,7 +23,7 @@ App.config(
 			templateUrl: '/templates/clients.html',
 			controller: Clients.ListController
 		});
-		$routes.when('/clients/:clientId', {
+		$routes.when('/clients/edit/:clientId', {
 			templateUrl: '/templates/clients/form.html',
 			controller: Clients.EditController
 		});

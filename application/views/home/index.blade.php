@@ -14,8 +14,8 @@
 </head>
 <body>
 	<div class="wrapper">
-		<h2 class="logo">LOGIN MANAGER</h2>
-		<p class="txt_right">Logged in as <strong>Ninja Admin </strong>  <span class="v_line"> | </span> <a href="#"> Logout</a></p>
+		<h2 class="logo">18FEET<span><br />&nbsp;LOGIN MANAGER</span></h2>
+		<div class="user">Logged in as <strong>Ninja Admin </strong>  <span class="v_line"> | </span> <a href="#"> Logout</a></div>
 		
 		<!-- Navigation -->
 		<div class="navigation">
