@@ -1,0 +1,30 @@
+<div class="content">
+	<div class="in author">
+		<h1>{{action}} PROJECT</h1>
+		<p>{{action}} a project edit projects, or create and manage logins.</p>
+	</div>
+
+	<div class="line"></div>
+
+	<div class="in forms">
+		<form method="post" ng-submit="saveProject(this)">
+			<p>
+				<strong>CLIENT</strong><br />
+				<select name="client_id" class="box" ng-model="project.client_id" ng-options="client.id as client.name for client in clients" required>
+					<option value="">Select Client</option>
+				</select>
+			</p>
+			<p>
+				<strong>PROJECT NAME</strong><br />
+				<input type="text" name="name" class="box" ng-model="project.name" />
+			</p>
+			<p>
+				<strong>NOTES</strong><br />
+				<textarea type="text" name="notes" class="box" ng-model="project.notes" rows="5"></textarea>
+			</p>
+			<p>
+				<input type="submit" tabindex="5" class="button" value="SAVE" />
+			</p>
+		</form>
+	</div>
+</div>

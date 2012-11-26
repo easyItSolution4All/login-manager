@@ -1,4 +1,4 @@
-var App = angular.module('Login Manager', ['ngResource', 'Services', 'Directives']);
+var App = angular.module('Login Manager', ['ngResource', 'Services', 'Directives', 'Filters']);
 
 App.config(
 	['$locationProvider', function($location) {
@@ -8,25 +8,44 @@ App.config(
 App.config(
 	['$routeProvider', function($routes) {
 		$routes.when('/', {
-			templateUrl: '/templates/logins.html',
-			controller: Logins.ListController
+			templateUrl: '/templates/home.html',
 		});
-		$routes.when('/logins/create', {
-			templateUrl: '/templates/logins/create.html',
-			controller: Logins.CreateController
-		});
+
 		$routes.when('/clients/create', {
 			templateUrl: '/templates/clients/form.html',
-			controller: Clients.CreateController
+			controller: ClientCreateCtrl
 		});
 		$routes.when('/clients', {
 			templateUrl: '/templates/clients.html',
-			controller: Clients.ListController
+			controller: ClientListCtrl
 		});
 		$routes.when('/clients/edit/:clientId', {
 			templateUrl: '/templates/clients/form.html',
-			controller: Clients.EditController
+			controller: ClientEditCtrl
 		});
+
+		$routes.when('/projects/create', {
+			templateUrl: '/templates/projects/form.html',
+			controller: ProjectCreateCtrl
+		});
+		$routes.when('/projects', {
+			templateUrl: '/templates/projects.html',
+			controller: ProjectListCtrl
+		});
+		$routes.when('/projects/edit/:projectId', {
+			templateUrl: '/templates/projects/form.html',
+			controller: ProjectEditCtrl
+		});
+
+		$routes.when('/logins', {
+			templateUrl: '/templates/logins.html',
+			controller: LoginsListCtrl
+		});
+		$routes.when('/logins/create', {
+			templateUrl: '/templates/logins/form.html',
+			controller: LoginsCreateCtrl
+		});
+
 		$routes.when('/404', {
 			templateUrl: '/templates/404.html'
 		});

@@ -1,31 +1,43 @@
 /* CSS Document */
-body { margin: 0; padding: 0; background-color:#ebebeb }
-body, input, select, textarea { font-family: Lucida Grande, Arial; font-size: 13px; color: #464646 }
-
-.wrapper { margin: 0 auto; width: 900px }
-.content { background-color:#FFFFFF; border: 1px solid #bab9b9 }
-.in{ margin: 20px }
-.line{border-top:1px solid #bab9b9; height:1px; }
+body { margin: 0; padding: 0; background-color: #ebebeb }
+body, input, select, textarea { font-family: Lucida Grande, Arial; font-size: 14px; color: #464646 }
 
 /*.............................................................General.................... */
 h1, h2, h3 { margin: 0; padding: 0; font-family: Georgia }
-h1 { font-size:32px }
+h1 { font-size: 32px }
 h2 { font-size: 24px }
+
+ul { list-style: none; margin: 0; padding: 0 }
 
 .author p { margin: 0; padding: 0 }
 .forms { line-height: 2em }
+.of { overflow: hidden }
 
 a { color: #BE0000; text-decoration: none }
-a:hover { color: #f7941d }
+a:hover { text-decoration: underline }
 
 .v-line { padding: 0 5px; color: #999999 }
+.wrapper { margin: 0 auto; width: 900px }
+
+.content { background-color: #FFFFFF; border: 1px solid #bab9b9 }
+.content.projects { width: 648px; float: left }
+	.content.projects li { padding: 20px; border-bottom: 1px solid #bab9b9 }
+		.content.projects li p { margin: 5px 0 0 0 }
+	.content.projects li:last-child { border-bottom: none }
+
+.projects-clients { width: 230px; float: right }
+	.projects-clients li a { padding: 10px 20px; display: block; text-decoration: none; color: #464646 }
+	.projects-clients li a:hover { background: #fafafa; color: #000 }
+	.projects-clients li a.active { background: #fff; color: #000 }
+
+.in { margin: 20px }
+.line { border-top: 1px solid #bab9b9; height: 1px }
 
 /*.............................................................Header.................... */
-.logo { float: left; margin: 30px 0; font-size: 40px; line-height: 18px }
-	.logo span { font-size: 16px; line-height: 10px; color: #666 }
-.user { float: right; margin: 60px 0 0 0 }
+.logo { float: left; margin: 20px 0; font-size: 40px; line-height: 20px }
+	.logo span { font-size: 16px; line-height: 8px; color: #666 }
+.user { float: right; margin: 50px 0 0 0 }
 
-/*.............................................................Form.................... */
 .box { border: 1px solid #bab9b9; padding: 10px; width: 600px; color: #707070; font-size: 14px }
 .box2 { border: 1px solid #bab9b9; padding: 10px; width: 400px; color: #707070; font-size: 14px }
 
@@ -35,13 +47,13 @@ a:hover { color: #f7941d }
 div.actions { float: right; margin-top: -20px }
 
 /*.............................................................Check YES or NO.................... */
-.check{ margin:25px; text-align:left; padding: 10px 15px; border:1px solid #bab9b9; background-color:#f7f7f7;}
+.check { margin: 25px; text-align:left; padding: 10px 15px; border:1px solid #bab9b9; background-color: #f7f7f7;}
 .good {}
 .icon { padding-right:8px }
 .bad {}
 
 /*..................................................... Navigation .....................*/	
-.navigation { background-color:#464646; float: left; margin-bottom: 20px; width: 900px; position:relative;}
+.navigation { background-color: #464646; margin-bottom: 20px; width: 900px; position:relative;}
 	.navigation ul { margin:0px; padding:0px; }
 		.navigation ul li { list-style:none; float: left; margin: 0; padding: 0 }
 		.navigation li a { float:left; color:#fff; margin: 0; font-size: 14px; text-decoration: none; padding: 10px 20px;  }
@@ -53,22 +65,19 @@ div.actions { float: right; margin-top: -20px }
 .search-box { padding: 6px; color: #999999; font-size: 13px; margin: 0; background-color:#FFFFFF; border:1px solid #ccc;}
 .search-btn { font-size: 13px }
 
-
-
 /*.............................................................Footer................... */
 .footer{text-align:right; margin-bottom:40px;}
 
-
 /*.............................................................Table................... */
+td { padding: 8px; text-align: left }
 
-
-td { padding: 12px; text-align:left; }
-
-.gray td {background-color:#f7f7f7;}
-.table_main { border-top: 1px solid #bab9b9; border-right: 1px solid #bab9b9; border-left: 1px solid #bab9b9;}
+.gray td { background-color:#f7f7f7 }
+.table_main { border-top: 1px solid #bab9b9 }
 .table_main .delete { width: 100% }
 
-td, th { border-bottom: 1px solid #bab9b9 }
-th { background-color: #d9d8d8; font-size: 80% }
-
+tr.even { background: #efefef }
+th { background-color: #464646; color: #ccc; font-size: 80%; text-align: left }
 th.actions { width: 100px }
+
+/* Form stuff */
+input.ng-invalid, select.ng-invalid, textarea.ng-invalid { border: 1px solid #ff0000 }

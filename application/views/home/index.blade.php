@@ -7,18 +7,22 @@
 	{{ HTML::script('/js/angular.min.js') }}
 	{{ HTML::script('/js/angular-resource.min.js') }}
 	{{ HTML::script('/js/services.js') }}
+	{{ HTML::script('/js/filters.js') }}
 	{{ HTML::script('/js/app.js') }}
 	{{ HTML::script('/js/directives.js') }}
 	{{ HTML::script('/js/controllers/logins.js') }}
 	{{ HTML::script('/js/controllers/clients.js') }}
+	{{ HTML::script('/js/controllers/projects.js') }}
 </head>
 <body>
-	<div class="wrapper">
-		<h2 class="logo">18FEET<span><br />&nbsp;LOGIN MANAGER</span></h2>
-		<div class="user">Logged in as <strong>Ninja Admin </strong>  <span class="v_line"> | </span> <a href="#"> Logout</a></div>
+	<div class="wrapper of">
+		<div class="header of">
+			<h2 class="logo">18FEET<span><br />&nbsp;LOGIN MANAGER</span></h2>
+			<div class="user">Logged in as <strong>Ninja Admin </strong>  <span class="v_line"> | </span> <a href="#"> Logout</a></div>
+		</div>
 		
 		<!-- Navigation -->
-		<div class="navigation">
+		<div class="navigation of">
 			<ul lm-menu></ul>
 			
 			<div id="searchform">
@@ -29,13 +33,11 @@
 			</div>
 		</div>
 		
-		<div class="clear"></div>
-		
-		<div class="content">
+		<div class="page of">
 			<div ng-view></div>
 		</div>
 		
-		<p class="footer"><a href="#">ADVANCED  SEARCH</a> <span class="v_line"> |</span> <a href="#">LOGOUT</a></p>
+		<!--<p class="footer"><a href="#">ADVANCED  SEARCH</a> <span class="v_line"> |</span> <a href="#">LOGOUT</a></p> -->
 	</div>
 </body>
 </html>

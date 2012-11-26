@@ -17,7 +17,8 @@ directives.directive('lmMenu', ['$location', function($location) {
 			});
 
 			scope.menu = [
-				{text: 'LOGINS', href: '/'},
+				{text: 'HOME', href: '/'},
+				{text: 'LOGINS', href: '/logins'},
 				{text: 'PROJECTS', href: '/projects'},
 				{text: 'CLIENTS', href: '/clients'}
 			];

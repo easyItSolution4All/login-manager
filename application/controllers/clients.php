@@ -3,7 +3,7 @@ class Clients_Controller extends Base_Controller
 {
 	public function get_index()
 	{
-		return Response::eloquent(Client::all());
+		return Response::eloquent(Client::order_by('name', 'asc')->get());
 	}
 	
 	public function get_view($id) {

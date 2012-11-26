@@ -1,0 +1,38 @@
+<div class="content projects">
+	<div class="in author">
+		<h1>PROJECTS</h1>
+		<p>Create and manage projects.</p>
+
+		<div class="actions">
+			<a href="/projects/create" class="button">CREATE PROJECT</a>
+		</div>
+	</div>
+	
+	<div class="line"></div>
+	
+	<div class="in">
+		<div ng-show="projects.length">
+			<table width="100%" border="0" cellspacing="0" cellpadding="10" class="table_main">
+				<tr>
+					<th>PROJECT NAME</th>
+					<th class="actions">ACTIONS</th>
+				</tr>
+				<tr ng-repeat="project in projects | selectedClient:clientId" ng-class-even="'even'">
+					<td>{{project.name}}</td>
+					<td><a href="/projects/edit/{{project.id}}">Edit</a><span class="v-line">|</span><a href="/projects/delete/{{project.id}}" ng-click="delete($event)">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+		<div ng-hide="projects.length">
+			<p>There are currently no projects added. Please <a href="/projects/create">add one</a>.</p>
+		</div>
+	</div>
+</div>
+<div class="projects-clients">
+	<ul>
+		<li><a href="" ng-click="selectClient()" ng-class="{active: null == clientId}">All Clients</a></li>
+		<li ng-repeat="project in projects | clientsOnly">
+			<a href="" ng-click="selectClient($event)" ng-class="{active: project.client_id == clientId}">{{project.client_name}}</a>
+		</li>
+	</ul>
+</div>

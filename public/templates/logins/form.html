@@ -1,0 +1,37 @@
+<div class="content">
+	<div class="in author">
+		<h1>{{action}} LOGIN</h1>
+		<p>{{action}} a login and add credentials.</p>
+	</div>
+
+	<div class="line"></div>
+
+	<div class="in forms">
+		<form method="post" ng-submit="saveLogin(this)">
+			<p>
+				<strong>LOGIN NAME</strong><br />
+				<input type="text" name="name" class="box" ng-model="login.name" />
+			</p>
+			<p>
+				<strong>REFERENCES</strong> (select a previous login if this login references another in any way)<br />
+				<select name="login_id" class="box" ng-model="login.login_id" ng-options="l.id as l.name for l in logins">
+					<option value=""></option>
+				</select>
+			</p>
+			<div ng-hide="{login.login_id != ''}">
+				<p>
+					<strong>TYPE</strong> (select a previous login if this login references another in any way)<br />
+					<select name="type" class="box" ng-model="login.login_id" ng-options="l.id as l.name for l in logins">
+						<option value=""></option>
+					</select>
+				</p>
+				<p>
+					<strong>NOTES</strong><br />
+					<textarea type="text" name="notes" class="box" ng-model="client.notes" rows="5"></textarea>
+				</p>
+			<p>
+				<input type="submit" tabindex="5" class="button" value="SAVE" />
+			</p>
+		</form>
+	</div>
+</div>
