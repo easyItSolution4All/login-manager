@@ -85,11 +85,12 @@ table th:first-child { -webkit-border-top-left-radius: 3px; -moz-border-top-left
 .footer{text-align:right; margin-bottom:40px;}
 
 /*.............................................................Table................... */
-td { padding: 10px; text-align: left }
+td { padding: 10px; text-align: left; text-overflow: ellipsis }
 tr.even { background: #efefef }
 th { background-color: #464646; color: #ccc; font-size: 80%; text-align: left; padding: 8px 10px }
 th.actions { width: 80px }
 th.login-type { width: 150px }
+th.location { width: 200px }
 td.icon, th.icon { padding: 3px 0 0 2px; width: 24px; text-align: center }
 
 .gray td { background-color:#f7f7f7 }

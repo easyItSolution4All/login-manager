@@ -17,8 +17,7 @@
 					<th class="icon"></th>
 					<th>NAME</th>
 					<th>CLIENT</th>
-					<th class="login-type">TYPE</th>
-					<th>LOCATION</th>
+					<th class="location">LOCATION</th>
 					<th>LOGIN</th>
 					<th>PASSWORD</th>
 					<th class="actions">ACTIONS</th>
@@ -27,7 +26,6 @@
 					<td class="icon"><img src="/img/{{login.type}}.png" width="16" height="16" /></td>
 					<td><a href="/logins/edit/{{login.id}}">{{login.name}}</a></td>
 					<td><a href="/clients/edit/{{login.project.client_id}}">{{login.project.client.name}}</a></td>
-					<td>{{login.type | properTypeCase}}</td>
 					<td ng-bind-html-unsafe="login.location | usableLocation"></td>
 					<td>{{login.login}}</td>
 					<td>* * * * * * <img src="/img/copy.png" width="16" height="16" ng-mouseover="setPass()" ng-click="copyPass()" id="loginPass{{login.id}}" /></td>
