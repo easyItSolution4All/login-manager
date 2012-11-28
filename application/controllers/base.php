@@ -23,6 +23,25 @@ class Base_Controller extends Controller
 	 * @return array
 	 */
 	protected function _data() {
-		return get_object_vars(Input::json());
+		return $this->_get_vars(Input::json());
+	}
+
+	/**
+	 * Retrieves the data and will recursively retrieve
+	 * more if an element is an object.
+	 * 
+	 * @param array $data
+	 * @return array
+	 */
+	protected function _get_vars($data) {
+		$data = get_object_vars($data);
+
+		foreach ($data as $key => $value) {
+			if (is_object($value)) {
+				$data[$key] = $this->_get_vars($value);
+			}
+		}
+
+		return $data;
 	}
 }

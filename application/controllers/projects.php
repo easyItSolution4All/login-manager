@@ -7,7 +7,7 @@ class Projects_Controller extends Base_Controller
 		$query->join('clients', 'clients.id', '=', 'projects.client_id');
 		$query->order_by('clients.name', 'asc');
 		$query->order_by('projects.name', 'asc');
-
+		
 		return Response::json($query->get(array('projects.id', 'projects.client_id', 'projects.name', 'projects.updated_at', 'projects.notes', 'clients.name AS client_name')));
 	}
 	

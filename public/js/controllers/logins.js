@@ -10,19 +10,56 @@ function LoginsListCtrl($scope, Login) {
 			this.login.$destroy();
 		}
 	};
+
+	$scope.setPass = function() {
+		console.log(this);
+		var phrase = this.login.project_id + this.login.name;
+		var pass = CryptoJS.AES.decrypt(angular.fromJson(this.login.password), phrase).toString(CryptoJS.enc.Utf8);
+
+		var clip = new ZeroClipboard.Client();
+
+		clip.setText(pass);
+		clip.setHandCursor(true);
+		clip.glue('loginPass' + this.login.id);
+	};
 	
 	$scope.logins = Login.query();
 }
 
-function LoginsCreateCtrl($scope, Login) {
+function LoginsCreateCtrl($scope, $rootScope, $location, Login, Project) {
 	$scope.login = new Login;
 	$scope.action = 'CREATE';
+	$scope.types = $rootScope.loginTypes;
+	$scope.projects = Project.query();
+	$scope.logins = Login.query();
+
 	$scope.saveLogin = function(scope) {
 		_saveLogin(scope, $location);
 	};
+	$scope.ifMysql = function() {
+		return $scope.login.type == 'mysql';
+	}
+}
+
+function LoginsEditCtrl($scope, $rootScope, $location, $routeParams, Login, Project) {
+	$scope.login = Login.get({id: $routeParams.loginId});
+	$scope.action = 'EDIT';
+	$scope.types = $rootScope.loginTypes;
+	$scope.projects = Project.query();
+	$scope.logins = Login.query();
+
+	$scope.saveLogin = function(scope) {
+		_saveLogin(scope, $location);
+	};
+	$scope.ifMysql = function() {
+		return $scope.login.type == 'mysql';
+	}
 }
 
 function _saveLogin(scope, $location) {
+	var phrase = scope.login.project_id + scope.login.name;
+	scope.login.password = CryptoJS.AES.encrypt(scope.login.password, phrase);
+	
 	var result = scope.login.$save({}, 
 		function() {
 			$location.path('/logins');

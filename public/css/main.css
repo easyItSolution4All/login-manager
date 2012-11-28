@@ -26,7 +26,7 @@ a:hover { text-decoration: underline }
 	.content.projects li:last-child { border-bottom: none }
 
 .projects-clients { width: 230px; float: right }
-	.projects-clients li a { padding: 10px 20px; display: block; text-decoration: none; color: #464646 }
+	.projects-clients li a { padding: 10px 20px; display: block; text-decoration: none; color: #464646; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px }
 	.projects-clients li a:hover { background: #fafafa; color: #000 }
 	.projects-clients li a.active { background: #fff; color: #000 }
 
@@ -38,8 +38,12 @@ a:hover { text-decoration: underline }
 	.logo span { font-size: 16px; line-height: 8px; color: #666 }
 .user { float: right; margin: 50px 0 0 0 }
 
-.box { border: 1px solid #bab9b9; padding: 10px; width: 600px; color: #707070; font-size: 14px }
-.box2 { border: 1px solid #bab9b9; padding: 10px; width: 400px; color: #707070; font-size: 14px }
+input, select, textarea { border: 1px solid #bab9b9; padding: 5px; color: #707070; font-size: 14px }
+
+.small { width: 200px }
+.medium { width: 400px }
+.large { width: 600px }
+.hint { color: #999 }
 
 .button { margin: 0px; padding: 7px 13px; border: 0px; background-color: #f7941d; color: #fff; font-size: 14px }
 .button:hover { color: #fff }
@@ -56,6 +60,7 @@ div.actions { float: right; margin-top: -20px }
 .navigation { background-color: #464646; margin-bottom: 20px; width: 900px; position:relative;}
 	.navigation ul { margin:0px; padding:0px; }
 		.navigation ul li { list-style:none; float: left; margin: 0; padding: 0 }
+		.navigation ul li:first-child a { -webkit-border-top-left-radius: 3px; -moz-border-top-left-radius: 3px; border-top-left-radius: 3px; -webkit-border-bottom-left-radius: 3px; -moz-border-bottom-left-radius: 3px; border-bottom-left-radius: 3px; }
 		.navigation li a { float:left; color:#fff; margin: 0; font-size: 14px; text-decoration: none; padding: 10px 20px;  }
 		.navigation li a:hover, .navigation li .active { color: #FFFFFF; background-color: #BE0000; }
 .clear{clear:both;}
@@ -65,19 +70,26 @@ div.actions { float: right; margin-top: -20px }
 .search-box { padding: 6px; color: #999999; font-size: 13px; margin: 0; background-color:#FFFFFF; border:1px solid #ccc;}
 .search-btn { font-size: 13px }
 
+.rounded { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px }
+.rounded-top { -webkit-border-top-left-radius: 3px; -moz-border-top-left-radius: 3px; border-top-left-radius: 3px; -webkit-border-top-right-radius: 3px; -moz-border-top-right-radius: 3px; border-top-right-radius: 3px }
+.rounded-bottom { -webkit-border-bottom-left-radius: 3px; -moz-border-bottom-left-radius: 3px; border-bottom-left-radius: 3px; -webkit-border-bottom-right-radius: 3px; -moz-border-bottom-right-radius: 3px; border-bottom-right-radius: 3px }
+
+table th:last-child { -webkit-border-top-right-radius: 3px; -moz-border-top-right-radius: 3px; border-top-right-radius: 3px }
+table th:first-child { -webkit-border-top-left-radius: 3px; -moz-border-top-left-radius: 3px; border-top-left-radius: 3px }
+
 /*.............................................................Footer................... */
 .footer{text-align:right; margin-bottom:40px;}
 
 /*.............................................................Table................... */
-td { padding: 8px; text-align: left }
+td { padding: 10px; text-align: left }
+tr.even { background: #efefef }
+th { background-color: #464646; color: #ccc; font-size: 80%; text-align: left; padding: 8px 10px }
+th.actions { width: 80px }
+th.login-type { width: 150px }
+td.icon, th.icon { padding: 3px 0 0 2px; width: 24px; text-align: center }
 
 .gray td { background-color:#f7f7f7 }
-.table_main { border-top: 1px solid #bab9b9 }
 .table_main .delete { width: 100% }
-
-tr.even { background: #efefef }
-th { background-color: #464646; color: #ccc; font-size: 80%; text-align: left }
-th.actions { width: 100px }
 
 /* Form stuff */
 input.ng-invalid, select.ng-invalid, textarea.ng-invalid { border: 1px solid #ff0000 }

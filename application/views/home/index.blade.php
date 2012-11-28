@@ -3,16 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Login Manager</title>
-	{{ HTML::style('/css/main.css') }}
-	{{ HTML::script('/js/angular.min.js') }}
-	{{ HTML::script('/js/angular-resource.min.js') }}
-	{{ HTML::script('/js/services.js') }}
-	{{ HTML::script('/js/filters.js') }}
-	{{ HTML::script('/js/app.js') }}
-	{{ HTML::script('/js/directives.js') }}
-	{{ HTML::script('/js/controllers/logins.js') }}
-	{{ HTML::script('/js/controllers/clients.js') }}
-	{{ HTML::script('/js/controllers/projects.js') }}
+	{{ Asset::scripts(); }}
+	{{ Asset::styles(); }}
 </head>
 <body>
 	<div class="wrapper of">
@@ -22,13 +14,13 @@
 		</div>
 		
 		<!-- Navigation -->
-		<div class="navigation of">
+		<div class="navigation of rounded">
 			<ul lm-menu></ul>
 			
 			<div id="searchform">
-				<form method="get" action="">
-				<input type="text" placeholder="What are you looking for?" class="search-box" name="search" />
-				<input type="submit" class="button search-btn" value="SEARCH" />
+				<form method="get" ng-submit="loginSearch(this)">
+					<input type="text" placeholder="What are you looking for?" class="search-box" name="query" ng-model="query" />
+					<input type="submit" class="button search-btn" value="SEARCH" />
 				</form>
 			</div>
 		</div>

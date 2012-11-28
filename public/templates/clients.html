@@ -4,22 +4,27 @@
 		<p>Create and manage clients and their projects.</p>
 
 		<div class="actions">
-			<a href="/clients/create" class="button">CREATE CLIENT</a>
+			<a href="/clients/create" class="button rounded">CREATE CLIENT</a>
 		</div>
 	</div>
 
 	<div class="line"></div>
 
 	<div class="in">
-		<table width="100%" border="0" cellspacing="0" cellpadding="10" class="table_main" >
-			<tr>
-				<th>CLIENT NAME</th>
-				<th class="actions">ACTIONS</th>
-			</tr>
-			<tr ng-repeat="client in clients" ng-class-even="'even'">
-				<td>{{client.name}}</td>
-				<td><a href="/clients/edit/{{client.id}}">Edit</a><span class="v-line">|</span><a href="/clients/delete/{{client.id}}" ng-click="delete($event)">Delete</a></td>
-			</tr>
-		</table>
+		<div ng-show="clients.length" class="rounded-top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_main rounded-top" >
+				<tr>
+					<th>CLIENT NAME</th>
+					<th class="actions">ACTIONS</th>
+				</tr>
+				<tr ng-repeat="client in clients" ng-class-even="'even'">
+					<td>{{client.name}}</td>
+					<td><a href="/clients/edit/{{client.id}}">Edit</a><span class="v-line">|</span><a href="/clients/delete/{{client.id}}" ng-click="delete($event)">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+		<div ng-hide="clients.length">
+			<p>There are currently no clients added. Please <a href="/clients/create">add one</a>.</p>
+		</div>
 	</div>
 </div>

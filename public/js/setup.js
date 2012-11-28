@@ -1,0 +1,1 @@
+ZeroClipboard.setMoviePath('/swf/ZeroClipboard.swf');

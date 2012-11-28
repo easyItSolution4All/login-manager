@@ -125,3 +125,20 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('login');
 });
+
+// Register assets to be rendered in the layout
+View::composer('home.index', function($view) {
+	Asset::add('main', 'css/main.css');
+	Asset::add('angular', 'js/lib/angular.min.js');
+	Asset::add('angular-resource', 'js/lib/angular-resource.min.js');
+	Asset::add('aes', 'js/lib/aes.js');
+	Asset::add('zero-clipboard', 'js/lib/ZeroClipboard.min.js');
+	Asset::add('services', 'js/services.js');
+	Asset::add('filters', 'js/filters.js');
+	Asset::add('app', 'js/app.js');
+	Asset::add('setup', 'js/setup.js');
+	Asset::add('directives', 'js/directives.js');
+	Asset::add('logins-controller', 'js/controllers/logins.js');
+	Asset::add('clients-controller', 'js/controllers/clients.js');
+	Asset::add('projects-controller', 'js/controllers/projects.js');
+});

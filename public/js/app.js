@@ -23,7 +23,7 @@ App.config(
 			templateUrl: '/templates/clients/form.html',
 			controller: ClientEditCtrl
 		});
-
+		
 		$routes.when('/projects/create', {
 			templateUrl: '/templates/projects/form.html',
 			controller: ProjectCreateCtrl
@@ -36,7 +36,7 @@ App.config(
 			templateUrl: '/templates/projects/form.html',
 			controller: ProjectEditCtrl
 		});
-
+		
 		$routes.when('/logins', {
 			templateUrl: '/templates/logins.html',
 			controller: LoginsListCtrl
@@ -44,6 +44,10 @@ App.config(
 		$routes.when('/logins/create', {
 			templateUrl: '/templates/logins/form.html',
 			controller: LoginsCreateCtrl
+		});
+		$routes.when('/logins/edit/:loginId', {
+			templateUrl: '/templates/logins/form.html',
+			controller: LoginsEditCtrl
 		});
 
 		$routes.when('/404', {
@@ -54,3 +58,16 @@ App.config(
 		});
 	}]
 );
+
+App.run(function($rootScope, $routeParams){
+	$rootScope.loginTypes = [
+		{value: 'cms', text: 'CMS'},
+		{value: 'ftp', text: 'FTP'},
+		{value: 'ssh', text: 'SSH'},
+		{value: 'mysql', text: 'MySQL'},
+		{value: 'panel', text: 'Server Control Panel'},
+		{value: 'service', text: 'Third-Party Service'}
+	];
+	
+	$rootScope.params = $routeParams;
+});

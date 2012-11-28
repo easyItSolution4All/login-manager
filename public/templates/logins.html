@@ -4,28 +4,34 @@
 		<p>Create and manage login locations, usernames, passwords and other related info.</p>
 
 		<div class="actions">
-			<a href="/logins/create" class="button">CREATE LOGIN</a>
+			<a href="/logins/create" class="button rounded">CREATE LOGIN</a>
 		</div>
 	</div>
 
 	<div class="line"></div>
 
 	<div class="in">
-		<div ng-show="logins.length">			
-			<table width="100%" border="0" cellspacing="0" cellpadding="10" class="table_main" >
+		<div ng-show="logins.length" class="rounded-top">			
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_main">
 				<tr>
+					<th class="icon"></th>
+					<th>NAME</th>
+					<th>CLIENT</th>
 					<th class="login-type">TYPE</th>
 					<th>LOCATION</th>
 					<th>LOGIN</th>
-					<th>NOTES</th>
+					<th>PASSWORD</th>
 					<th class="actions">ACTIONS</th>
 				</tr>
-				<tr ng-repeat="login in logins">
-					<td>{{login.type}}</td>
-					<td>{{login.location}}</td>
-					<td>{{login.user}}</td>
-					<td>{{login.protocol}}</td>
-					<td><a href="#">Edit</a><span class="v-line">|</span><a href="#" class="delete">Delete</a></td>
+				<tr ng-repeat="login in logins" ng-class-even="'even'">
+					<td class="icon"><img src="/img/{{login.type}}.png" width="16" height="16" /></td>
+					<td><a href="/logins/edit/{{login.id}}">{{login.name}}</a></td>
+					<td><a href="/clients/edit/{{login.project.client_id}}">{{login.project.client.name}}</a></td>
+					<td>{{login.type | properTypeCase}}</td>
+					<td ng-bind-html-unsafe="login.location | usableLocation"></td>
+					<td>{{login.login}}</td>
+					<td>* * * * * * <img src="/img/copy.png" width="16" height="16" ng-mouseover="setPass()" ng-click="copyPass()" id="loginPass{{login.id}}" /></td>
+					<td><a href="/logins/edit/{{login.id}}">Edit</a><span class="v-line">|</span><a href="/logins/delete/{{login.id}}" ng-click="delete($event)">Delete</a></td>
 				</tr>
 			</table>
 		</div>
