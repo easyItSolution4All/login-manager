@@ -16,7 +16,7 @@
 			</p>
 			<p>
 				<strong>LOGIN NAME</strong><br />
-				<input type="text" name="name" class="medium" ng-model="login.name" />
+				<input type="text" name="name" class="medium" ng-model="login.name" required />
 			</p>
 			<p>
 				<strong>REFERENCES</strong> <span class="hint">(select a previous login if this login references another in any way)</span><br />
@@ -27,7 +27,7 @@
 			<div ng-hide="login.login_id">
 				<p>
 					<strong>TYPE</strong> <span class="hint">(select what type of login this record is for)</span><br />
-					<select name="type" class="small" ng-model="login.type" ng-options="l.value as l.text for l in types">
+					<select name="type" class="small" ng-model="login.type" ng-options="l.value as l.text for l in types" required>
 						<option value="">Select login type</option>
 					</select>
 				</p>
@@ -62,7 +62,8 @@
 			</div>
 
 			<p>
-				<input type="submit" tabindex="5" class="button rounded" value="SAVE" />
+				<input type="button" class="button cancel rounded" value="CANCEL" />
+				<input type="submit" class="button continue rounded" value="SAVE" />
 			</p>
 		</form>
 	</div>

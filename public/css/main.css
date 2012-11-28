@@ -45,8 +45,11 @@ input, select, textarea { border: 1px solid #bab9b9; padding: 5px; color: #70707
 .large { width: 600px }
 .hint { color: #999 }
 
-.button { margin: 0px; padding: 7px 13px; border: 0px; background-color: #f7941d; color: #fff; font-size: 14px }
-.button:hover { color: #fff }
+.button { margin: 0px; padding: 7px 13px; border: 0px; font-size: 14px; cursor: pointer; text-decoration: none }
+.button:hover { text-decoration: none }
+.continue { background-color: #f7941d; color: #fff }
+.continue:hover { background-color: #f6ad58 }
+.cancel { background-color: #ccc; color: #999 }
 
 div.actions { float: right; margin-top: -20px }
 
@@ -92,4 +95,4 @@ td.icon, th.icon { padding: 3px 0 0 2px; width: 24px; text-align: center }
 .table_main .delete { width: 100% }
 
 /* Form stuff */
-input.ng-invalid, select.ng-invalid, textarea.ng-invalid { border: 1px solid #ff0000 }
+input.ng-invalid, select.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid { border: 1px solid #ff0000 }

@@ -29,13 +29,14 @@ class Logins_Controller extends Base_Controller
 
 	/**
 	 * Overloads the parent and removes the password_confirm
-	 * field from the data array, to prepare for saving.
+	 * field from the data array, to prepare for saving, as well
+	 * as encoding the password field, if it's been provided.
 	 *
 	 * @return array
 	 */
 	protected function _data() {
 		$data = parent::_data();
-		$data['password'] = json_encode($data['password']);
+		if ($data['password']) $data['password'] = json_encode($data['password']);
 		unset($data['password_confirm']);
 		return $data;
 	}

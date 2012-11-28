@@ -12,7 +12,6 @@ function LoginsListCtrl($scope, Login) {
 	};
 
 	$scope.setPass = function() {
-		console.log(this);
 		var phrase = this.login.project_id + this.login.name;
 		var pass = CryptoJS.AES.decrypt(angular.fromJson(this.login.password), phrase).toString(CryptoJS.enc.Utf8);
 
@@ -42,7 +41,10 @@ function LoginsCreateCtrl($scope, $rootScope, $location, Login, Project) {
 }
 
 function LoginsEditCtrl($scope, $rootScope, $location, $routeParams, Login, Project) {
-	$scope.login = Login.get({id: $routeParams.loginId});
+	$scope.login = Login.get({id: $routeParams.loginId}, function(data) {
+		data.password = '';
+	});
+	
 	$scope.action = 'EDIT';
 	$scope.types = $rootScope.loginTypes;
 	$scope.projects = Project.query();

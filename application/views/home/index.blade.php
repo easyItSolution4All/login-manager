@@ -20,7 +20,7 @@
 			<div id="searchform">
 				<form method="get" ng-submit="loginSearch(this)">
 					<input type="text" placeholder="What are you looking for?" class="search-box" name="query" ng-model="query" />
-					<input type="submit" class="button search-btn" value="SEARCH" />
+					<input type="submit" class="button continue search-btn" value="SEARCH" />
 				</form>
 			</div>
 		</div>
