@@ -21,7 +21,18 @@ function LoginsListCtrl($scope, Login) {
 		clip.setHandCursor(true);
 		clip.glue('loginPass' + this.login.id);
 	};
+
+	$scope.selectClient = function() {
+		event.stopPropagation();
+		event.preventDefault();
+
+		if (this.login)
+			$scope.clientId = this.login.project.client_id;
+		else
+			$scope.clientId = null;
+	}
 	
+	$scope.clientId = null;
 	$scope.logins = Login.query();
 }
 

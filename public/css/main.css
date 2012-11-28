@@ -1,6 +1,6 @@
 /* CSS Document */
 body { margin: 0; padding: 0; background-color: #ebebeb }
-body, input, select, textarea { font-family: Lucida Grande, Arial; font-size: 14px; color: #464646 }
+body, input, select, textarea { font-family: Lucida Grande, Arial; font-size: 13px; color: #464646 }
 
 /*.............................................................General.................... */
 h1, h2, h3 { margin: 0; padding: 0; font-family: Georgia }
@@ -21,15 +21,15 @@ a:hover { text-decoration: underline }
 .wrapper { margin: 0 auto; width: 1000px }
 
 .content { background-color: #FFFFFF; border: 1px solid #bab9b9 }
-.content.projects { width: 748px; float: left }
+.content.projects, .content.logins { width: 748px; float: left }
 	.content.projects li { padding: 20px; border-bottom: 1px solid #bab9b9 }
 		.content.projects li p { margin: 5px 0 0 0 }
 	.content.projects li:last-child { border-bottom: none }
 
-.projects-clients { width: 230px; float: right }
-	.projects-clients li a { padding: 10px 20px; display: block; text-decoration: none; color: #464646; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px }
-	.projects-clients li a:hover { background: #fafafa; color: #000 }
-	.projects-clients li a.active { background: #fff; color: #000 }
+.client-list { width: 230px; float: right }
+	.client-list li a { padding: 10px 20px; display: block; text-decoration: none; color: #464646; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px }
+	.client-list li a:hover { background: #fafafa; color: #000 }
+	.client-list li a.active { background: #fff; color: #000 }
 
 .in { margin: 20px }
 .line { border-top: 1px solid #bab9b9; height: 1px }
@@ -55,9 +55,9 @@ input, select, textarea { border: 1px solid #bab9b9; padding: 5px; color: #70707
 div.actions { float: right; margin-top: -20px }
 
 /*.............................................................Check YES or NO.................... */
-.check { margin: 25px; text-align:left; padding: 10px 15px; border:1px solid #bab9b9; background-color: #f7f7f7;}
+.check { margin: 25px; text-align: left; padding: 10px 15px; border: 1px solid #bab9b9; background-color: #f7f7f7 }
 .good {}
-.icon { padding-right:8px }
+.icon { padding-right: 8px }
 .bad {}
 
 /*..................................................... Navigation .....................*/	
