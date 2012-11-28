@@ -14,11 +14,13 @@
 		<div ng-show="projects.length" class="rounded-top">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_main">
 				<tr>
-					<th>PROJECT NAME</th>
+					<th>PROJECT</th>
+					<th>CLIENT</th>
 					<th class="actions">ACTIONS</th>
 				</tr>
 				<tr ng-repeat="project in projects | selectedClient:clientId" ng-class-even="'even'">
 					<td>{{project.name}}</td>
+					<td>{{project.client_name}}</td>
 					<td><a href="/projects/edit/{{project.id}}">Edit</a><span class="v-line">|</span><a href="/projects/delete/{{project.id}}" ng-click="delete($event)">Delete</a></td>
 				</tr>
 			</table>

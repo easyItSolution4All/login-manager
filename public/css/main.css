@@ -82,17 +82,17 @@ table th:last-child { -webkit-border-top-right-radius: 3px; -moz-border-top-righ
 table th:first-child { -webkit-border-top-left-radius: 3px; -moz-border-top-left-radius: 3px; border-top-left-radius: 3px }
 
 /*.............................................................Footer................... */
-.footer{text-align:right; margin-bottom:40px;}
+.footer { text-align: right; margin-bottom: 40px }
 
 /*.............................................................Table................... */
-td { padding: 10px; text-align: left }
-tr.even { background: #efefef }
-th { background-color: #464646; color: #ccc; font-size: 80%; text-align: left; padding: 8px 10px }
+td { padding: 8px; text-align: left; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc }
+td:first-child { border-left: 1px solid #ccc }
+tr.even { background: #fafafa }
+th { background-color: #464646; color: #ccc; font-size: 80%; text-align: left; padding: 6px 8px }
 th.actions { width: 80px }
 th.login-type { width: 150px }
 th.location { width: 200px }
-th.password { width: 70px }
-td.icon, th.icon { padding: 3px 0 0 2px; width: 24px; text-align: center }
+th.password { width: 75px }
 
 .gray td { background-color:#f7f7f7 }
 .table_main .delete { width: 100% }

@@ -59,7 +59,7 @@ App.config(
 	}]
 );
 
-App.run(function($rootScope, $routeParams){
+App.run(function($rootScope, $routeParams, $location){
 	$rootScope.loginTypes = [
 		{value: 'cms', text: 'CMS'},
 		{value: 'ftp', text: 'FTP'},
@@ -70,4 +70,8 @@ App.run(function($rootScope, $routeParams){
 	];
 	
 	$rootScope.params = $routeParams;
+
+	$rootScope.go = function(url) {
+		$location.path(url);
+	}
 });
