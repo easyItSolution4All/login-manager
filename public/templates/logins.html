@@ -15,20 +15,20 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_main">
 				<tr>
 					<th class="icon"></th>
+					<th>LOCATION</th>
+					<th>LOGIN</th>
+					<th class="password">PASSWORD</th>
 					<th>NAME</th>
 					<th>CLIENT</th>
-					<th class="location">LOCATION</th>
-					<th>LOGIN</th>
-					<th>PASSWORD</th>
 					<th class="actions">ACTIONS</th>
 				</tr>
 				<tr ng-repeat="login in logins" ng-class-even="'even'">
 					<td class="icon"><img src="/img/{{login.type}}.png" width="16" height="16" /></td>
-					<td><a href="/logins/edit/{{login.id}}">{{login.name}}</a></td>
-					<td><a href="/clients/edit/{{login.project.client_id}}">{{login.project.client.name}}</a></td>
 					<td ng-bind-html-unsafe="login.location | usableLocation"></td>
 					<td>{{login.login}}</td>
 					<td>* * * * * * <img src="/img/copy.png" width="16" height="16" ng-mouseover="setPass()" ng-click="copyPass()" id="loginPass{{login.id}}" /></td>
+					<td><a href="/logins/edit/{{login.id}}">{{login.name}}</a></td>
+					<td><a href="/clients/edit/{{login.project.client_id}}">{{login.project.client.name}}</a></td>
 					<td><a href="/logins/edit/{{login.id}}">Edit</a><span class="v-line">|</span><a href="/logins/delete/{{login.id}}" ng-click="delete($event)">Delete</a></td>
 				</tr>
 			</table>

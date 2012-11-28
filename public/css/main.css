@@ -18,10 +18,10 @@ a { color: #BE0000; text-decoration: none }
 a:hover { text-decoration: underline }
 
 .v-line { padding: 0 5px; color: #999999 }
-.wrapper { margin: 0 auto; width: 900px }
+.wrapper { margin: 0 auto; width: 1000px }
 
 .content { background-color: #FFFFFF; border: 1px solid #bab9b9 }
-.content.projects { width: 648px; float: left }
+.content.projects { width: 748px; float: left }
 	.content.projects li { padding: 20px; border-bottom: 1px solid #bab9b9 }
 		.content.projects li p { margin: 5px 0 0 0 }
 	.content.projects li:last-child { border-bottom: none }
@@ -61,7 +61,7 @@ div.actions { float: right; margin-top: -20px }
 .bad {}
 
 /*..................................................... Navigation .....................*/	
-.navigation { background-color: #464646; margin-bottom: 20px; width: 900px; position:relative;}
+.navigation { background-color: #464646; margin-bottom: 20px; position:relative;}
 	.navigation ul { margin:0px; padding:0px; }
 		.navigation ul li { list-style:none; float: left; margin: 0; padding: 0 }
 		.navigation ul li:first-child a { -webkit-border-top-left-radius: 3px; -moz-border-top-left-radius: 3px; border-top-left-radius: 3px; -webkit-border-bottom-left-radius: 3px; -moz-border-bottom-left-radius: 3px; border-bottom-left-radius: 3px; }
@@ -85,16 +85,17 @@ table th:first-child { -webkit-border-top-left-radius: 3px; -moz-border-top-left
 .footer{text-align:right; margin-bottom:40px;}
 
 /*.............................................................Table................... */
-td { padding: 10px; text-align: left; text-overflow: ellipsis }
+td { padding: 10px; text-align: left }
 tr.even { background: #efefef }
 th { background-color: #464646; color: #ccc; font-size: 80%; text-align: left; padding: 8px 10px }
 th.actions { width: 80px }
 th.login-type { width: 150px }
 th.location { width: 200px }
+th.password { width: 70px }
 td.icon, th.icon { padding: 3px 0 0 2px; width: 24px; text-align: center }
 
 .gray td { background-color:#f7f7f7 }
 .table_main .delete { width: 100% }
 
 /* Form stuff */
-input.ng-invalid, select.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid { border: 1px solid #ff0000 }
+input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid { border: 1px solid #ff0000 }
