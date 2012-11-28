@@ -53,6 +53,22 @@ Route::get('logins/(:num)', array('uses' => 'logins@view'));
 Route::post('logins/(:num)', array('uses' => 'logins@update'));
 Route::delete('logins/(:num)', array('uses' => 'logins@index'));
 
+
+/**
+ * If the request type is not an AJAX request, then we simply want 
+ * to return the main layout page, in this case it's home.index.
+ */
+Route::filter('response', function($response)
+{
+	// Redirects have no content and errors should handle their own layout.
+	if ($response->status() > 300) return;
+
+	if (!Request::ajax()) {
+		$response->header('content-type', File::mime('html'));
+		$response->content = View::make('home.index')->render();
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers
@@ -70,7 +86,7 @@ Route::delete('logins/(:num)', array('uses' => 'logins@index'));
 
 Event::listen('404', function()
 {
-	return Response::error('404');
+	return Redirect::to('/');
 });
 
 Event::listen('500', function()

@@ -12,6 +12,7 @@ ul { list-style: none; margin: 0; padding: 0 }
 .author p { margin: 0; padding: 0 }
 .forms { line-height: 2em }
 .of { overflow: hidden }
+.page { margin-bottom: 50px }
 
 a { color: #BE0000; text-decoration: none }
 a:hover { text-decoration: underline }

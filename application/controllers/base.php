@@ -5,6 +5,14 @@ class Base_Controller extends Controller
 	public $restful = true;
 	
 	/**
+	 * Sets up some basic rules for the application
+	 */
+	public function __construct() {
+		parent::__construct();
+		$this->filter('after', 'response');
+	}
+
+	/**
 	 * Catch-all method for requests that can't be matched.
 	 *
 	 * @param  string    $method
