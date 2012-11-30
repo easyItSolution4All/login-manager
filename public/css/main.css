@@ -17,7 +17,7 @@ ul { list-style: none; margin: 0; padding: 0 }
 .of { overflow: hidden }
 .page { margin-bottom: 50px }
 
-a { color: #464646; text-decoration: underline }
+a { color: #464646; text-decoration: underline; outline: none }
 a:hover { text-decoration: none }
 
 .v-line { padding: 0 5px; color: #999999 }
@@ -42,7 +42,7 @@ a:hover { text-decoration: none }
 	.logo span { font-size: 16px; line-height: 8px; color: #666 }
 .user { float: right; margin: 50px 0 0 0 }
 
-input, select, textarea { border: 1px solid #bab9b9; padding: 5px; color: #707070; font-size: 14px }
+input, select, textarea { border: 1px solid #bab9b9; padding: 5px; background: #fafafa; color: #707070; font-size: 14px }
 
 .small { width: 200px }
 .medium { width: 400px }

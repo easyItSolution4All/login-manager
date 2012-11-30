@@ -27,33 +27,33 @@
 			<div ng-hide="login.login_id">
 				<p>
 					<strong>TYPE</strong> <span class="hint">(select what type of login this record is for)</span><br />
-					<select name="type" class="small" ng-model="login.type" ng-options="l.value as l.text for l in types">
+					<select name="type" class="small" ng-model="login.type" ng-options="l.value as l.text for l in types" ng-required="!login.login_id">
 						<option value="">Select login type</option>
 					</select>
 				</p>
 				<p>
 					<strong>LOCATION</strong><br />
-					<span id="locationProtocol">{{login.type | setProtocol}}</span>&nbsp;<input type="text" name="location" class="small" ng-model="login.location" />
+					<span id="locationProtocol">{{login.type | setProtocol}}</span><input type="text" name="location" class="small" ng-model="login.location" ng-required="!login.login_id" />
 				</p>
 				<p ng-show="ifMysql()">
 					<strong>DATABASE</strong><br />
-					<input type="text" name="database" class="small" ng-model="login.database" />
+					<input type="text" name="database" class="small" ng-model="login.database" ng-required="!login.login_id && login.type == 'mysql'" />
 				</p>
 				<p ng-show="ifMysql()">
 					<strong>PORT</strong><br />
-					<input type="text" name="port" class="small" ng-model="login.port" placeholder="3306" />
+					<input type="text" name="port" class="small" ng-model="login.port" />
 				</p>
 				<p>
 					<strong>LOGIN</strong> <span class="hint">(user login credentials)</span><br />
-					<input type="text" name="login" class="small" ng-model="login.login" />
+					<input type="text" name="login" class="small" ng-model="login.login" ng-required="!login.login_id" />
 				</p>
 				<p>
 					<strong>PASSWORD</strong><br />
-					<input type="password" name="password" class="small" ng-model="login.password" />
+					<input type="password" name="password" class="small" ng-model="login.password" ng-required="!login.login_id" />
 				</p>
 				<p>
 					<strong>CONFIRM PASSWORD</strong> <span class="hint">(enter password again)</span><br />
-					<input type="password" name="password_confirm" class="small" ng-model="login.password_confirm" />
+					<input type="password" name="password_confirm" class="small" ng-model="login.password_confirm" ng-required="login.password" />
 				</p>
 				<p>
 					<strong>NOTES</strong><br />

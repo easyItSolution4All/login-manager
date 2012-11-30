@@ -9,6 +9,7 @@ class Base_Controller extends Controller
 	 */
 	public function __construct() {
 		parent::__construct();
+		
 		$this->filter('after', 'response');
 	}
 
@@ -51,5 +52,15 @@ class Base_Controller extends Controller
 		}
 
 		return $data;
+	}
+
+	/**
+	 * Returns a JSON response with a status/message
+	 *
+	 * @param string $status
+	 * @param string $message
+	 */
+	protected function _message($status, $message = '') {
+		return Response::json(array('status' => $status, 'message' => $message));
 	}
 }

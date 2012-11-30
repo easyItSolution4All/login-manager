@@ -63,7 +63,41 @@ App.config(
 	}]
 );
 
-App.run(function($rootScope, $routeParams, $location){
+App.config(function($httpProvider) {
+	var interceptor = ['$rootScope','$q', function(scope, $q) {
+		function success(response) {
+			return response;
+		}
+
+		function error(response) {
+			var status = response.status;
+
+			if (status == 401) {
+				var deferred = $q.defer();
+				var req = {
+					config: response.config,
+					deferred: deferred
+				}
+				scope.requests401.push(req);
+				scope.$broadcast('event:loginRequired');
+
+				return deferred.promise;
+			}
+
+			// otherwise
+			return $q.reject(response);
+		}
+	 
+		return function(promise) {
+			return promise.then(success, error);
+		};
+	 
+	}];
+
+	$httpProvider.responseInterceptors.push(interceptor);
+});
+
+App.run(function($rootScope, $routeParams, $location, $http){
 	$rootScope.loginTypes = [
 		{value: 'cms', text: 'CMS'},
 		{value: 'ftp', text: 'FTP'},
@@ -75,7 +109,66 @@ App.run(function($rootScope, $routeParams, $location){
 	
 	$rootScope.params = $routeParams;
 
+	// Simple, small method we use a lot just to go to other locations in the app
 	$rootScope.go = function(url) {
 		$location.path(url);
+	};
+
+	/**
+	 * Holds all the requests which failed due to 401 response.
+	 */
+	$rootScope.requests401 = [];
+
+	/**
+	 * On 'event:loginConfirmed', resend all the 401 requests.
+	 */
+	$rootScope.$on('event:loginConfirmed', function() {
+		var i, requests = $rootScope.requests401;
+
+		for (i = 0; i < requests.length; i++) {
+			retry(requests[i]);
+		}
+
+		$rootScope.requests401 = [];
+
+		function retry(req) {
+			$http(req.config).then(function(response) {
+				req.deferred.resolve(response);
+			});
+		}
+	});
+ 
+	/**
+	 * On 'event:loginRequest' send credentials to the server.
+	 */
+	$rootScope.$on('event:loginRequest', function(event, username, password) {
+		var payload = $.param({j_username: username, j_password: password});
+		var config = {
+		 	headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+		}
+		$http.post('/sessions/create', payload, config).success(function(data) {
+			if (data === 'AUTHENTICATION_SUCCESS') {
+				$rootScope.$broadcast('event:loginConfirmed');
+			}
+		});
+	});
+
+	/**
+	* On 'logoutRequest' invoke logout on the server and broadcast 'event:loginRequired'.
+	*/
+	$rootScope.$on('event:logoutRequest', function() {
+		$http.delete('/sessions', {}).success(function() {
+			ping();
+		});
+	});
+
+	/**
+	* Ping server to figure out if user is already logged in.
+	*/
+	function ping() {
+		$http.get('/sessions').success(function() {
+			$rootScope.$broadcast('event:loginConfirmed');
+		});
 	}
+	ping();
 });

@@ -52,7 +52,7 @@ Filters.filter('setProtocol', function() {
 		if (input == 'ftp')
 			protocol = 'ftp://';
 
-		return protocol;
+		return protocol + ' ';
 	};
 });
 

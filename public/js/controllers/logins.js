@@ -38,6 +38,7 @@ function LoginsListCtrl($scope, Login) {
 
 function LoginsCreateCtrl($scope, $rootScope, $location, Login, Project) {
 	$scope.login = new Login;
+	$scope.login.port = 3306; // default port value
 	$scope.action = 'CREATE';
 	$scope.types = $rootScope.loginTypes;
 	$scope.projects = Project.query();

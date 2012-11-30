@@ -35,24 +35,29 @@
 // Home route
 Route::get('/', array('uses' => 'users@index'));
 
-// Clients
-Route::any('clients', array('uses' => 'clients@index'));
-Route::get('clients/(:num)', array('uses' => 'clients@view'));
-Route::post('clients/(:num)', array('uses' => 'clients@update'));
-Route::delete('clients/(:num)', array('uses' => 'clients@index'));
+Route::group(array('before' => 'auth'), function() {
+	// Clients
+	Route::any('clients', array('uses' => 'clients@index'));
+	Route::get('clients/(:num)', array('uses' => 'clients@view'));
+	Route::post('clients/(:num)', array('uses' => 'clients@update'));
+	Route::delete('clients/(:num)', array('uses' => 'clients@index'));
 
-// Projects
-Route::any('projects', array('uses' => 'projects@index'));
-Route::get('projects/(:num)', array('uses' => 'projects@view'));
-Route::post('projects/(:num)', array('uses' => 'projects@update'));
-Route::delete('projects/(:num)', array('uses' => 'projects@index'));
+	// Projects
+	Route::any('projects', array('uses' => 'projects@index'));
+	Route::get('projects/(:num)', array('uses' => 'projects@view'));
+	Route::post('projects/(:num)', array('uses' => 'projects@update'));
+	Route::delete('projects/(:num)', array('uses' => 'projects@index'));
 
-// Logins
-Route::any('logins', array('uses' => 'logins@index'));
-Route::get('logins/(:num)', array('uses' => 'logins@view'));
-Route::post('logins/(:num)', array('uses' => 'logins@update'));
-Route::delete('logins/(:num)', array('uses' => 'logins@index'));
+	// Logins
+	Route::any('logins', array('uses' => 'logins@index'));
+	Route::get('logins/(:num)', array('uses' => 'logins@view'));
+	Route::post('logins/(:num)', array('uses' => 'logins@update'));
+	Route::delete('logins/(:num)', array('uses' => 'logins@index'));
+});
 
+// Session routes
+Route::get('sessions', array('uses' => 'sessions@index'));
+Route::delete('sessions', array('uses' => 'sessions@index'));
 
 /**
  * If the request type is not an AJAX request, then we simply want 
@@ -69,20 +74,14 @@ Route::filter('response', function($response)
 	}
 });
 
-/*
-|--------------------------------------------------------------------------
-| Application 404 & 500 Error Handlers
-|--------------------------------------------------------------------------
-|
-| To centralize and simplify 404 handling, Laravel uses an awesome event
-| system to retrieve the response. Feel free to modify this function to
-| your tastes and the needs of your application.
-|
-| Similarly, we use an event to handle the display of 500 level errors
-| within the application. These errors are fired when there is an
-| uncaught exception thrown in the application.
-|
-*/
+/**
+ * Auth check, but only on ajax - cos all we're doing is rendering
+ * HTML anyways.
+ */
+Route::filter('auth', function()
+{
+	if (Auth::guest() && Request::ajax()) return Response::json(array(), 401);
+});
 
 Event::listen('404', function()
 {
@@ -122,29 +121,15 @@ Event::listen('500', function()
 |
 */
 
-Route::filter('before', function()
-{
-	// Do stuff before every request to your application...
-});
-
-Route::filter('after', function($response)
-{
-	// Do stuff after every request to your application...
-});
-
 Route::filter('csrf', function()
 {
 	if (Request::forged()) return Response::error('500');
 });
 
-Route::filter('auth', function()
-{
-	if (Auth::guest()) return Redirect::to('login');
-});
-
 // Register assets to be rendered in the layout
 View::composer('home.index', function($view) {
 	Asset::add('main', 'css/main.css');
+	Asset::add('jquery', 'js/lib/jquery.min.js');
 	Asset::add('angular', 'js/lib/angular.min.js');
 	Asset::add('angular-resource', 'js/lib/angular-resource.min.js');
 	Asset::add('aes', 'js/lib/aes.js');
