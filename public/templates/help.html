@@ -1,0 +1,20 @@
+<div class="content">
+	<div class="in author">
+		<h1>HELP</h1>
+		<p>A list of topics available to the 18 Feet login manager and other utilities.</p>
+	</div>
+	
+	<div class="line"></div>
+	
+	<div class="in help">
+		<h2 ng-click="setActive('what-is')">What is the 18 Feet login manager?</h2>
+		<p ng-show="active == 'what-is'">The 18 Feet login manager, is a utility that provides client login management and retrieval for all users. It's a central tool to ease the management of these credentials,
+		which are used on a daily basis.</p>
+
+		<h2 ng-click="setActive('how-login')">How do I add a login credential?</h2>
+		<p ng-show="active == 'how-login'">Adding a login credential is easy. If the client or project has not yet been created, view the client management area, add the client, then follow this with adding a project. Finally, add a login by viewing the logins section and adding it there.</p>
+
+		<h2 ng-click="setActive('why-not')">Why shouldn't we use Excel spreadsheets?</h2>
+		<p ng-show="active == 'why-not'">Excel spreadsheets are great. We all love them. I use them, you use them, hell - if my mother knew what an Excel spreadsheet was, I'm sure she'd use them to. The problem is, they're not great at everything. They've done us proud, they've served Tectonic Digital well for many years, but the time has come to advance our login management to new extremes, the push the physical boundaries of login management. Enter this software. It even makes toast.</p>
+	</div>
+</div>
