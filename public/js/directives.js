@@ -26,3 +26,14 @@ directives.directive('lmMenu', ['$location', function($location) {
 		}
 	};
 }]);
+
+directives.directive('loginItem', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		link: function(scope, element, attrs, login) {
+			console.log(scope);
+			return '';
+		}
+	};
+});

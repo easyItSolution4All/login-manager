@@ -3,7 +3,7 @@ class Logins_Controller extends Base_Controller
 {
 	public function get_index()
 	{
-		$logins = Login::with(array('project', 'project.client'))->get();
+		$logins = Login::with(array('reference', 'project', 'project.client'))->get();
 		return Response::eloquent($logins);
 	}
 	
@@ -36,7 +36,7 @@ class Logins_Controller extends Base_Controller
 	 */
 	protected function _data() {
 		$data = parent::_data();
-		if ($data['password']) $data['password'] = json_encode($data['password']);
+		if (!empty($data['password'])) $data['password'] = json_encode($data['password']);
 		unset($data['password_confirm']);
 		return $data;
 	}

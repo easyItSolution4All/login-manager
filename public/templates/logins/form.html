@@ -27,7 +27,7 @@
 			<div ng-hide="login.login_id">
 				<p>
 					<strong>TYPE</strong> <span class="hint">(select what type of login this record is for)</span><br />
-					<select name="type" class="small" ng-model="login.type" ng-options="l.value as l.text for l in types" required>
+					<select name="type" class="small" ng-model="login.type" ng-options="l.value as l.text for l in types">
 						<option value="">Select login type</option>
 					</select>
 				</p>
