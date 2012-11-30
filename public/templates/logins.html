@@ -14,20 +14,20 @@
 		<div ng-show="logins.length" class="rounded-top">			
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_main">
 				<tr>
+					<th>NAME</th>
 					<th>LOCATION</th>
 					<th>LOGIN</th>
 					<th class="password">PASSWORD</th>
-					<th>NAME</th>
 					<th>CLIENT</th>
-					<th class="actions">ACTIONS</th>
+					<th></th>
 				</tr>
 				<tr ng-repeat="login in logins" ng-class-even="'even'">
+					<td><a href="/logins/edit/{{login.id}}">{{login.name}}</a></td>
 					<td ng-bind-html-unsafe="login.location | usableLocation"></td>
 					<td>{{login.login}}</td>
 					<td>* * * * * * <img src="/img/copy.png" width="16" height="16" ng-mouseover="setPass()" ng-click="copyPass()" id="loginPass{{login.id}}" /></td>
-					<td><a href="/logins/edit/{{login.id}}">{{login.name}}</a></td>
 					<td><a href="/clients/edit/{{login.project.client_id}}">{{login.project.client.name}}</a></td>
-					<td><a href="/logins/edit/{{login.id}}">Edit</a> - <a href="/logins/delete/{{login.id}}" ng-click="delete($event)">Delete</a></td>
+					<td><a href="/logins/delete/{{login.id}}" ng-click="delete($event)"><img src="/img/delete.png" /></a></td>
 				</tr>
 			</table>
 		</div>

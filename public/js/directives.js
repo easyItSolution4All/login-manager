@@ -15,7 +15,7 @@ directives.directive('lmMenu', ['$location', function($location) {
 					else if (regex.test($location.$$url) && scope.menu[i].href != '/') scope.menu[i].active = true;
 				}
 			});
-
+			
 			scope.menu = [
 				{text: 'HOME', href: '/'},
 				{text: 'LOGINS', href: '/logins'},
