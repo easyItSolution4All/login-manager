@@ -20,7 +20,8 @@ directives.directive('lmMenu', ['$location', function($location) {
 				{text: 'HOME', href: '/'},
 				{text: 'LOGINS', href: '/logins'},
 				{text: 'PROJECTS', href: '/projects'},
-				{text: 'CLIENTS', href: '/clients'}
+				{text: 'CLIENTS', href: '/clients'},
+				{text: 'HELP', href: '/help'}
 			];
 		}
 	};

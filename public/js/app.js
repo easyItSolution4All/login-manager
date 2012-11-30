@@ -50,6 +50,10 @@ App.config(
 			controller: LoginsEditCtrl
 		});
 
+		$routes.when('/help', {
+			controller: HelpCtrl,
+			templateUrl: '/templates/help.html'
+		});
 		$routes.when('/404', {
 			templateUrl: '/templates/404.html'
 		});
