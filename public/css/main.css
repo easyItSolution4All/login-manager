@@ -54,6 +54,7 @@ input, select, textarea { border: 1px solid #bab9b9; padding: 5px; background: #
 .continue { background-color: #f7941d; color: #fff }
 .continue:hover { background-color: #f6ad58 }
 .cancel { background-color: #ccc; color: #999 }
+.overlay { position: fixed; z-index: 10; background: #fff; opacity: 0.7; top: 0; right: 0; left: 0; bottom: 0; display: none }
 
 div.actions { float: right; margin-top: -20px }
 
@@ -100,6 +101,12 @@ th.password { width: 75px }
 
 .gray td { background-color:#f7f7f7 }
 .table_main .delete { width: 100% }
+
+.login-box { display: none; position: absolute; top: 50%; left: 50%; margin: -200px 0 0 -150px; width: 300px; height: 400px; z-index: 11 }
+	.login-box .container { background: #fff; border: 5px solid #464646 }
+	.login-box h2 { font-family: Lucida Grande, Arial; font-size: 16px; color: #fff; background: #464646; padding: 10px; }
+	.login-box .form { padding: 10px; }
+		.login-box .form input { display: block; width: 260px; margin-bottom: 10px; }
 
 /* Form stuff */
 input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid { border: 1px solid #ff0000 }

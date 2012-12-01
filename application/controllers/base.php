@@ -60,7 +60,7 @@ class Base_Controller extends Controller
 	 * @param string $status
 	 * @param string $message
 	 */
-	protected function _message($status, $message = '') {
-		return Response::json(array('status' => $status, 'message' => $message));
+	protected function _message($status, $message = '', $status_code = 200) {
+		return Response::json(array('status' => $status, 'message' => $message), $status_code);
 	}
 }

@@ -56,8 +56,7 @@ Route::group(array('before' => 'auth'), function() {
 });
 
 // Session routes
-Route::get('sessions', array('uses' => 'sessions@index'));
-Route::delete('sessions', array('uses' => 'sessions@index'));
+Route::any('sessions', array('uses' => 'sessions@index'));
 
 /**
  * If the request type is not an AJAX request, then we simply want 

@@ -10,7 +10,7 @@
 	<div class="wrapper of">
 		<div class="header of">
 			<h2 class="logo">18FEET<span><br />&nbsp;LOGIN MANAGER</span></h2>
-			<div class="user">Logged in as <strong>Ninja Admin </strong>  <span class="v_line"> | </span> <a href="#"> Logout</a></div>
+			<lm-user-panel />
 		</div>
 		
 		<!-- Navigation -->
@@ -31,5 +31,6 @@
 		
 		<!--<p class="footer"><a href="#">ADVANCED  SEARCH</a> <span class="v_line"> |</span> <a href="#">LOGOUT</a></p> -->
 	</div>
+	<lm-login />
 </body>
 </html>

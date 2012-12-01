@@ -107,6 +107,7 @@ App.run(function($rootScope, $routeParams, $location, $http){
 		{value: 'service', text: 'Third-Party Service'}
 	];
 	
+	$rootScope.user = null;
 	$rootScope.params = $routeParams;
 
 	// Simple, small method we use a lot just to go to other locations in the app
@@ -137,21 +138,6 @@ App.run(function($rootScope, $routeParams, $location, $http){
 			});
 		}
 	});
- 
-	/**
-	 * On 'event:loginRequest' send credentials to the server.
-	 */
-	$rootScope.$on('event:loginRequest', function(event, username, password) {
-		var payload = $.param({j_username: username, j_password: password});
-		var config = {
-		 	headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-		}
-		$http.post('/sessions/create', payload, config).success(function(data) {
-			if (data === 'AUTHENTICATION_SUCCESS') {
-				$rootScope.$broadcast('event:loginConfirmed');
-			}
-		});
-	});
 
 	/**
 	* On 'logoutRequest' invoke logout on the server and broadcast 'event:loginRequired'.
@@ -166,9 +152,11 @@ App.run(function($rootScope, $routeParams, $location, $http){
 	* Ping server to figure out if user is already logged in.
 	*/
 	function ping() {
-		$http.get('/sessions').success(function() {
+		$http.get('/sessions').success(function(data) {
+			$rootScope.user = data;
 			$rootScope.$broadcast('event:loginConfirmed');
 		});
 	}
+
 	ping();
 });
