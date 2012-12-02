@@ -1,4 +1,4 @@
-function LoginsListCtrl($scope, $rootScope, $http, Login) {
+function LoginsListCtrl($scope, $rootScope, $http, Login, Client) {
 	$scope.delete = function(event) {
 		event.stopPropagation();
 		event.preventDefault();
@@ -22,18 +22,16 @@ function LoginsListCtrl($scope, $rootScope, $http, Login) {
 		clip.glue('loginPass' + this.login.id);
 	};
 
-	$scope.selectClient = function() {
-		event.stopPropagation();
-		event.preventDefault();
+	$scope.reset = function() {
+		$scope.client = null;
+		$scope.type = null;
+		$scope.favourites = '';
+	}
 
-		if (this.login)
-			$scope.clientId = this.login.project.client_id;
-		else
-			$scope.clientId = null;
-	};
-	
-	$scope.clientId = null;
 	$scope.logins = Login.query();
+	$scope.types = $rootScope.loginTypes;
+	$scope.clients = Client.query();
+	$scope.reset();
 }
 
 function LoginsCreateCtrl($scope, $rootScope, $location, Login, Project) {

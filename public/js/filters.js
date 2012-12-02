@@ -65,12 +65,56 @@ Filters.filter('properTypeCase', function($rootScope) {
 });
 
 Filters.filter('usableLocation', function() {
-	return function(input) {
-		if (this.login.type == 'cms' || this.login.type == 'panel' || this.login.type == 'service') {
+	return function(input, login) {
+		if (login.type == 'cms' || login.type == 'panel' || login.type == 'service') {
 			var location = 'http://' + input;
 			return '<a href="' + location + '" target="_blank">' + input + '</a>';
 		}
 
 		return input;
+	};
+});
+
+/**
+ * Shows logins based on selected login type and/or client
+ */
+Filters.filter('logins', function() {
+	return function(input) {
+		if (this.client == null && this.type == null && this.favourties == '') return input;
+
+		var requiredNumConditions = 0;
+
+		if (this.client != null) requiredNumConditions++;
+		if (this.type != null) requiredNumConditions++;
+		if (this.favourites != '') requiredNumConditions++;
+
+		var logins = [];
+
+		for (var i = 0; i < input.length; i++) {
+			var conditionsMet = 0;
+			
+			if (this.client != null && input[i].project.client_id == this.client) conditionsMet++;
+			if (this.type != null && input[i].type == this.type) conditionsMet++;
+			if (this.favourites != '' && this.favourites == 'true') {
+				// loop through favourites and see if this exists
+				var favs = this.user.favourites;
+				for (var j = 0; j < favs.length; j++) {
+					if (favs[j] == input[i].id) {
+						conditionsMet++;
+					}
+				}
+			}
+
+			if (this.favourites != '' && this.favourites == 'false') {
+				// loop through favourites and see if this exists
+				if (this.user.favourites.indexOf(input[i].id) == -1) {
+					conditionsMet++;
+				}
+			}
+
+			if (conditionsMet == requiredNumConditions) logins.push(input[i]);
+		}
+		
+		return logins;
 	};
 });

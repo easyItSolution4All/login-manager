@@ -20,3 +20,9 @@ Services.factory('Login', ['$resource', function($resource) {
 	  destroy: { method: 'DELETE' }
   });
 }]);
+
+Services.factory('Favourite', ['$resource', function($resource) {
+	return $resource('/favourites/:id', {id: '@id'}, {
+	  destroy: { method: 'DELETE' }
+  });
+}]);

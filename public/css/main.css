@@ -5,7 +5,7 @@ body, input, select, textarea { font-family: Lucida Grande, Arial; font-size: 14
 /*.............................................................General.................... */
 h1, h2, h3 { margin: 0; padding: 0; font-family: Georgia; font-weight: normal }
 h1 { font-size: 32px }
-h2 { font-size: 24px }
+h2 { font-size: 20px; font-family: Lucida Grande, Arial; }
 
 .help h2 { color: #BE0000; cursor: pointer; font-family: Lucida Grande, Arial; font-size: 16px; line-height: 28px; border-bottom: 1px solid #eaeaea }
 
@@ -44,16 +44,19 @@ a:hover { text-decoration: none }
 
 input, select, textarea { border: 1px solid #bab9b9; padding: 5px; background: #fafafa; color: #707070; font-size: 14px }
 
+.tiny { width: 120px }
 .small { width: 200px }
 .medium { width: 400px }
 .large { width: 600px }
 .hint { color: #999 }
+.label { font-weight: bold; font-size: 11px; display: inline-block; width: 80px }
 
 .button { margin: 0px; padding: 7px 13px; border: 0px; font-size: 14px; cursor: pointer; text-decoration: none }
 .button:hover { text-decoration: none }
 .continue { background-color: #f7941d; color: #fff }
 .continue:hover { background-color: #f6ad58 }
 .cancel { background-color: #ccc; color: #999 }
+.cancel:hover { background-color: #eaeaea; }
 .overlay { position: fixed; z-index: 10; background: #fff; opacity: 0.7; top: 0; right: 0; left: 0; bottom: 0; display: none }
 
 div.actions { float: right; margin-top: -20px }
@@ -99,6 +102,7 @@ th.login-type { width: 150px }
 th.location { width: 200px }
 th.password { width: 75px }
 th.fav { width: 16px; }
+td.home-login div { float: left; width: 50% }
 
 .gray td { background-color:#f7f7f7 }
 .table_main .delete { width: 100% }
@@ -111,6 +115,11 @@ th.fav { width: 16px; }
 		.login-box .form input[type=checkbox] { width: auto; float: left; outline: none; border: none; }
 		.login-box .form .remember-text { display: block; float: left; margin: 2px 0 0 10px; }
 		.login-box .form .button { width: 250px; }
+
+.filter { margin-bottom: 10px; }
+	.filter .text { float: right; margin: 6px 0 0 10px; }
+	.filter select { float: right; margin-left: 10px; }
+	.filter input.button { float: right; margin-left: 10px; padding: 6px 13px }
 
 /* Form stuff */
 input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid { border: 1px solid #ff0000 }

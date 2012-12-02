@@ -1,5 +1,5 @@
 function ProjectListCtrl($scope, Project, Client) {
-	$scope.selectClient = function() {
+	$scope.selectClient = function(event) {
 		event.stopPropagation();
 		event.preventDefault();
 

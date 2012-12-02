@@ -16,4 +16,9 @@ class Favourites_Controller extends Base_Controller
 			return $this->_message('success', 'Favourite added.');
 		}
 	}
+
+	public function get_index() {
+		$favourites = Favourite::with(array('login', 'login.project', 'login.project.client'))->where_user_id(Auth::user()->id);
+		return Response::eloquent($favourites->get());
+	}
 }

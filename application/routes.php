@@ -146,4 +146,5 @@ View::composer('home.index', function($view) {
 	Asset::add('clients-controller', 'js/controllers/clients.js');
 	Asset::add('projects-controller', 'js/controllers/projects.js');
 	Asset::add('help-controller', 'js/controllers/help.js');
+	Asset::add('home-controller', 'js/controllers/home.js');
 });

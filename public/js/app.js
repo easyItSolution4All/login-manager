@@ -7,9 +7,10 @@ App.config(
 );
 App.config(
 	['$routeProvider', function($routes) {
-		$routes.when('/', {
-			templateUrl: '/templates/home.html',
-		});
+		// $routes.when('/', {
+		// 	templateUrl: '/templates/home.html',
+		// 	controller: HomeCtrl
+		// });
 
 		$routes.when('/clients/create', {
 			templateUrl: '/templates/clients/form.html',
@@ -58,7 +59,7 @@ App.config(
 			templateUrl: '/templates/404.html'
 		});
 		$routes.otherwise({
-			redirectTo: '/404'
+			redirectTo: '/logins'
 		});
 	}]
 );
