@@ -53,6 +53,9 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('logins/(:num)', array('uses' => 'logins@view'));
 	Route::post('logins/(:num)', array('uses' => 'logins@update'));
 	Route::delete('logins/(:num)', array('uses' => 'logins@index'));
+
+	// Favourites
+	Route::any('favourites', array('uses' => 'favourites@index'));
 });
 
 // Session routes
@@ -131,6 +134,7 @@ View::composer('home.index', function($view) {
 	Asset::add('jquery', 'js/lib/jquery.min.js');
 	Asset::add('angular', 'js/lib/angular.min.js');
 	Asset::add('angular-resource', 'js/lib/angular-resource.min.js');
+	Asset::add('angular-cookies', 'js/lib/angular-cookies.min.js');
 	Asset::add('aes', 'js/lib/aes.js');
 	Asset::add('zero-clipboard', 'js/lib/ZeroClipboard.min.js');
 	Asset::add('services', 'js/services.js');

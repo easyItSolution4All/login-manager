@@ -1,5 +1,5 @@
 <?php
-class Project extends Eloquent
+class Project extends Base_Model
 {
 	public static $accessible = array('client_id', 'name', 'notes');
 	

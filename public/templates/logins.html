@@ -11,10 +11,11 @@
 	<div class="line"></div>
 
 	<div class="in">
-		<div ng-show="logins.length" class="rounded-top">		
+		<div ng-show="logins.length" class="rounded-top">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_main">
 				<thead>
 					<tr>
+						<th class="fav"></th>
 						<th>NAME</th>
 						<th>LOCATION</th>
 						<th>LOGIN</th>
@@ -25,6 +26,7 @@
 				</thead>
 				<tbody ng-repeat="login in logins">
 					<tr ng-class-even="'even'" ng-show="login.login_id">
+						<td><a href="" ng-click="setFavourite()"><img src="" lm-favourite-src /></a></td>
 						<td><a href="/logins/edit/{{login.id}}" title="References: {{login.reference.name}}">{{login.name}}</a></td>
 						<td ng-bind-html-unsafe="login.reference.location | usableLocation"></td>
 						<td>{{login.reference.login}}</td>
@@ -33,6 +35,7 @@
 						<td><a href="/logins/delete/{{login.id}}" ng-click="delete($event)"><img src="/img/delete.png" /></a></td>
 					</tr>
 					<tr ng-class-even="'even'" ng-hide="login.login_id">
+						<td><a href="" ng-click="setFavourite()"><img src="" lm-favourite-src /></a></td>
 						<td><a href="/logins/edit/{{login.id}}">{{login.name}}</a></td>
 						<td ng-bind-html-unsafe="login.location | usableLocation"></td>
 						<td>{{login.login}}</td>

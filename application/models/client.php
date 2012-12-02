@@ -1,5 +1,5 @@
 <?php
-class Client extends Eloquent
+class Client extends Base_Model
 {
 	public static $accessible = array('name', 'notes');
 

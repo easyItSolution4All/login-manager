@@ -33,7 +33,7 @@ class Sessions_Controller extends Base_Controller
 	public function get_index() {
 		if (Auth::check()) {
 			$user = Auth::user();
-			$return = array('id' => $user->id, 'name' => $user->name);
+			$return = array('id' => $user->id, 'name' => $user->name, 'favourites' => $user->favourites()->lists('login_id'));
 			return Response::json($return);
 		}
 		else {

@@ -3,7 +3,7 @@ class Clients_Controller extends Base_Controller
 {
 	public function get_index()
 	{
-		return Response::eloquent(Client::order_by('name', 'asc')->get());
+		return Response::eloquent(Client::where_null('deleted_at')->order_by('name', 'asc')->get());
 	}
 	
 	public function get_view($id) {

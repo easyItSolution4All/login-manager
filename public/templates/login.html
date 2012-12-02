@@ -5,6 +5,9 @@
 		<form class="form" ng-submit="submitLogin()">
 			<input type="text" name="email" ng-model="email" placeholder="Email address" />
 			<input type="password" name="password" ng-model="password" placeholder="Password" />
+			<div class="of">
+				<input type="checkbox" id="remember" name="remember" ng-model="remember" /><label for="remember" class="remember-text">Remember login?</label>
+			</div>
 			<input type="submit" class="button continue rounded" value="Login" />
 		</form>
 	</div>

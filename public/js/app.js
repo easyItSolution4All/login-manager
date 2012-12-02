@@ -1,4 +1,4 @@
-var App = angular.module('Login Manager', ['ngResource', 'Services', 'Directives', 'Filters']);
+var App = angular.module('Login Manager', ['ngResource', 'ngCookies', 'Services', 'Directives', 'Filters']);
 
 App.config(
 	['$locationProvider', function($location) {
@@ -107,7 +107,8 @@ App.run(function($rootScope, $routeParams, $location, $http){
 		{value: 'service', text: 'Third-Party Service'}
 	];
 	
-	$rootScope.user = null;
+	$rootScope.user = {};
+	$rootScope.user.favourites = [];
 	$rootScope.params = $routeParams;
 
 	// Simple, small method we use a lot just to go to other locations in the app

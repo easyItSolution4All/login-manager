@@ -98,6 +98,7 @@ th.actions { width: 80px }
 th.login-type { width: 150px }
 th.location { width: 200px }
 th.password { width: 75px }
+th.fav { width: 16px; }
 
 .gray td { background-color:#f7f7f7 }
 .table_main .delete { width: 100% }
@@ -105,8 +106,11 @@ th.password { width: 75px }
 .login-box { display: none; position: absolute; top: 50%; left: 50%; margin: -100px 0 0 -150px; width: 300px; z-index: 11; -webkit-box-shadow: 3px 3px 2px rgba(50, 50, 50, 0.2); -moz-box-shadow: 3px 3px 2px rgba(50, 50, 50, 0.2); box-shadow: 3px 3px 2px rgba(50, 50, 50, 0.2); }
 	.login-box .container { background: #fff; border: 5px solid #464646 }
 	.login-box h2 { font-size: 14px; font-weight: bold; color: #fff; background: #464646; padding: 10px; }
-	.login-box .form { padding: 10px; }
-		.login-box .form input { display: block; width: 260px; margin-bottom: 10px; }
+	.login-box .form { padding: 20px 20px 10px; }
+		.login-box .form input { display: block; width: 240px; margin-bottom: 10px; }
+		.login-box .form input[type=checkbox] { width: auto; float: left; outline: none; border: none; }
+		.login-box .form .remember-text { display: block; float: left; margin: 2px 0 0 10px; }
+		.login-box .form .button { width: 250px; }
 
 /* Form stuff */
 input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid { border: 1px solid #ff0000 }

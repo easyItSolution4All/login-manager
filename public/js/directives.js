@@ -20,15 +20,14 @@ directives.directive('lmMenu', ['$location', function($location) {
 				{text: 'HOME', href: '/'},
 				{text: 'LOGINS', href: '/logins'},
 				{text: 'PROJECTS', href: '/projects'},
-				{text: 'CLIENTS', href: '/clients'},
-				{text: 'ADMIN', href: '/admin'}
+				{text: 'CLIENTS', href: '/clients'}
 			];
 		}
 	};
 }]);
 
 // Manages the login functionality for the application
-directives.directive('lmLogin', ['$rootScope', function($rootScope) {
+directives.directive('lmLogin', ['$rootScope', '$cookies', function($rootScope, $cookies) {
 	return {
 		restrict: 'E',
 		replace: false,
@@ -36,7 +35,14 @@ directives.directive('lmLogin', ['$rootScope', function($rootScope) {
 		link: function(scope, element, attrs) {
 			var timeout= 300;
 
+			if ($cookies.email) {
+				scope.email = $cookies.email;
+			}
+
 			scope.submitLogin = function() {
+				if (scope.remember) {
+					$cookies.email = scope.email;
+				}
 				$.post('/sessions', {email: scope.email, password: scope.password}, function(data) {
 					if (data.status == 'success') {
 						$rootScope.$broadcast('event:loginConfirmed');
@@ -55,11 +61,14 @@ directives.directive('lmLogin', ['$rootScope', function($rootScope) {
 	};
 }]);
 
+/**
+ * Renders the user menu when appropriate, when the user is logged in.
+ */
 directives.directive('lmUserPanel', ['$rootScope', function($rootScope) {
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<div class="user" ng-show="user">Logged in as <strong>{{user.name}}</strong> <span class="v_line"> | </span> <a href="/help">Help</a> <span class="v_line"> | </span> <a href="" ng-click="logout()">Logout</a></div>',
+		template: '<div class="user" ng-show="user.id">Logged in as <strong>{{user.name}}</strong> <span class="v_line"> | </span> <a href="/help">Help</a> <span class="v_line"> | </span> <a href="" ng-click="logout()">Logout</a></div>',
 		link: function(scope, element, attrs) {
 			scope.user = $rootScope.user;
 			scope.logout = function() {
@@ -68,3 +77,57 @@ directives.directive('lmUserPanel', ['$rootScope', function($rootScope) {
 		}
 	};
 }]);
+
+/**
+ * Determines the image to use for the "favourite" icon that is utilised
+ * when showing logins. This will look into the user's favourites and determine
+ * whether the grayscale image is to be used, or the star icon.
+ */
+directives.directive('lmFavouriteSrc', ['$rootScope', function($rootScope) {
+	return {
+		restrict: 'A',
+		replace: false,
+		link: function(scope, element, attrs) {
+			setIcon(false);
+
+			if ($rootScope.user && $rootScope.user.favourites) {
+				var favs = $rootScope.user.favourites;
+
+				for (var i = 0; i < favs.length; i++) {
+					if (favs[i] == scope.login.id) {
+						setIcon(true);
+					}
+				}
+			}
+
+			// Allows for the updating of a favourite login
+			scope.setFavourite = function($event) {
+				var favs = $rootScope.user.favourites;
+				var login = this.login;
+
+				$.post('/favourites/', {login_id: login.id});
+
+				// update the image
+				var fav = favs.indexOf(this.login.id);
+				if (fav != -1) {
+					$rootScope.user.favourites.splice(fav, 1);
+					setIcon(false);
+				}
+				else {
+					$rootScope.user.favourites.push(login.id);
+					setIcon(true);
+				}
+			};
+
+			// sets the image required for the favourite
+			function setIcon(favourite) {
+				var src = 'img/non-favourite.png';
+
+				if (favourite) src = 'img/favourite.png';
+				
+				$(element).attr('src', src);
+			}
+		}
+	};
+}]);
+

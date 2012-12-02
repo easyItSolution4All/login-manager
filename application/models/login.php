@@ -1,5 +1,5 @@
 <?php
-class Login extends Eloquent
+class Login extends Base_Model
 {
 	/**
 	 * Provides the relationship back to the login table, if

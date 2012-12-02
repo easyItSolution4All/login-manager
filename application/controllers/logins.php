@@ -3,7 +3,7 @@ class Logins_Controller extends Base_Controller
 {
 	public function get_index()
 	{
-		$logins = Login::with(array('reference', 'project', 'project.client'))->get();
+		$logins = Login::with(array('reference', 'project', 'project.client'))->where_null('deleted_at')->get();
 		return Response::eloquent($logins);
 	}
 	

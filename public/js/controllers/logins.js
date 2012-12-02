@@ -1,4 +1,4 @@
-function LoginsListCtrl($scope, Login) {
+function LoginsListCtrl($scope, $rootScope, $http, Login) {
 	$scope.delete = function(event) {
 		event.stopPropagation();
 		event.preventDefault();
@@ -30,7 +30,7 @@ function LoginsListCtrl($scope, Login) {
 			$scope.clientId = this.login.project.client_id;
 		else
 			$scope.clientId = null;
-	}
+	};
 	
 	$scope.clientId = null;
 	$scope.logins = Login.query();
