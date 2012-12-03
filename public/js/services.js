@@ -26,3 +26,9 @@ Services.factory('Favourite', ['$resource', function($resource) {
 	  destroy: { method: 'DELETE' }
   });
 }]);
+
+Services.factory('User', ['$resource', function($resource) {
+	return $resource('/users/:id', {id: '@id'}, {
+	  destroy: { method: 'DELETE' }
+  });
+}]);

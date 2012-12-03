@@ -1,0 +1,33 @@
+<div class="content">
+	<div class="in author">
+		<h1>UPDATE PROFILE</h1>
+		<p>Update and manage your profile settings and details.</p>
+	</div>
+
+	<div class="line"></div>
+
+	<div class="in forms">
+		<form method="post" ng-submit="saveProfile(this)">
+			<p>
+				<strong>NAME</strong><br />
+				<input type="text" name="name" class="medium" ng-model="user.name" required />
+			</p>
+			<p>
+				<strong>EMAIL</strong><br />
+				<input type="text" name="email" class="medium" ng-model="user.email" required />
+			</p>
+			<p>
+				<strong>PASSWORD</strong><br />
+				<input type="password" name="password" class="small" ng-model="user.password" />
+			</p>
+			<p>
+				<strong>CONFIRM PASSWORD</strong> <span class="hint">(enter password again)</span><br />
+				<input type="password" name="password_confirm" class="small" ng-model="user.password_confirm" />
+			</p>
+			<p>
+				<input type="button" class="button cancel rounded" value="CANCEL" ng-click="go('/logins')" />
+				<input type="submit" class="button continue rounded" value="SAVE" />
+			</p>
+		</form>
+	</div>
+</div>

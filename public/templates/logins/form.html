@@ -49,11 +49,11 @@
 				</p>
 				<p>
 					<strong>PASSWORD</strong><br />
-					<input type="password" name="password" class="small" ng-model="login.password" ng-required="!login.login_id" />
+					<input type="password" name="password" class="small" ng-model="login.password" ng-required="!login.login_id && action == 'edit'" />
 				</p>
 				<p>
 					<strong>CONFIRM PASSWORD</strong> <span class="hint">(enter password again)</span><br />
-					<input type="password" name="password_confirm" class="small" ng-model="login.password_confirm" ng-required="login.password" />
+					<input type="password" name="password_confirm" class="small" ng-model="login.password_confirm" ng-required="login.password && action == 'edit'" />
 				</p>
 				<p>
 					<strong>NOTES</strong><br />

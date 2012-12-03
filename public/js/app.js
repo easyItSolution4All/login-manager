@@ -51,6 +51,11 @@ App.config(
 			controller: LoginsEditCtrl
 		});
 
+		$routes.when('/profile', {
+			controller: UserProfileCtrl,
+			templateUrl: '/templates/profile.html'
+		});
+
 		$routes.when('/help', {
 			controller: HelpCtrl,
 			templateUrl: '/templates/help.html'

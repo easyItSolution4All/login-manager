@@ -68,7 +68,7 @@ directives.directive('lmUserPanel', ['$rootScope', function($rootScope) {
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<div class="user" ng-show="user.id">Logged in as <strong>{{user.name}}</strong> <span class="v_line"> | </span> <a href="/help">Help</a> <span class="v_line"> | </span> <a href="" ng-click="logout()">Logout</a></div>',
+		template: '<div class="user" ng-show="user.id">Logged in as <strong>{{user.name}}</strong> <span class="v_line"> | </span> <a href="/help">Help</a> <span class="v_line"> | </span> <a href="/profile">Profile</a> <span class="v_line"> | </span> <a href="" ng-click="logout()">Logout</a></div>',
 		link: function(scope, element, attrs) {
 			scope.user = $rootScope.user;
 			scope.logout = function() {

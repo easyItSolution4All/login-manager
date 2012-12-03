@@ -70,9 +70,9 @@ function LoginsEditCtrl($scope, $rootScope, $location, $routeParams, Login, Proj
 
 function _saveLogin(scope, $location) {
 	var phrase = scope.login.project_id + scope.login.name;
-	scope.login.password = CryptoJS.AES.encrypt(scope.login.password, phrase);
+	scope.login.password = (scope.login.password) ?  CryptoJS.AES.encrypt(scope.login.password, phrase) : '';
 	
-	var result = scope.login.$save({}, 
+	var result = scope.login.$save({},
 		function() {
 			$location.path('/logins');
 		},

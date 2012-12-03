@@ -56,6 +56,10 @@ Route::group(array('before' => 'auth'), function() {
 
 	// Favourites
 	Route::any('favourites', array('uses' => 'favourites@index'));
+
+	// Users
+	Route::get('users/(:num)', array('uses' => 'users@view'));
+	Route::post('users/(:num)', array('uses' => 'users@update'));
 });
 
 // Session routes
@@ -147,4 +151,5 @@ View::composer('home.index', function($view) {
 	Asset::add('projects-controller', 'js/controllers/projects.js');
 	Asset::add('help-controller', 'js/controllers/help.js');
 	Asset::add('home-controller', 'js/controllers/home.js');
+	Asset::add('users-controller', 'js/controllers/users.js');
 });
