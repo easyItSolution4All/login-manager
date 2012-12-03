@@ -35,25 +35,28 @@
 // Home route
 Route::get('/', array('uses' => 'users@index'));
 
+// Session routes
+Route::any('sessions', array('uses' => 'sessions@index'));
+
 Route::group(array('before' => 'auth'), function() {
 	// Clients
 	Route::any('clients', array('uses' => 'clients@index'));
 	Route::get('clients/(:num)', array('uses' => 'clients@view'));
 	Route::post('clients/(:num)', array('uses' => 'clients@update'));
 	Route::delete('clients/(:num)', array('uses' => 'clients@index'));
-
+	
 	// Projects
 	Route::any('projects', array('uses' => 'projects@index'));
 	Route::get('projects/(:num)', array('uses' => 'projects@view'));
 	Route::post('projects/(:num)', array('uses' => 'projects@update'));
 	Route::delete('projects/(:num)', array('uses' => 'projects@index'));
-
+	
 	// Logins
 	Route::any('logins', array('uses' => 'logins@index'));
 	Route::get('logins/(:num)', array('uses' => 'logins@view'));
 	Route::post('logins/(:num)', array('uses' => 'logins@update'));
 	Route::delete('logins/(:num)', array('uses' => 'logins@index'));
-
+	
 	// Favourites
 	Route::any('favourites', array('uses' => 'favourites@index'));
 
@@ -61,9 +64,6 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('users/(:num)', array('uses' => 'users@view'));
 	Route::post('users/(:num)', array('uses' => 'users@update'));
 });
-
-// Session routes
-Route::any('sessions', array('uses' => 'sessions@index'));
 
 /**
  * If the request type is not an AJAX request, then we simply want 
