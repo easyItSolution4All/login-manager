@@ -61,8 +61,7 @@ Route::group(array('before' => 'auth'), function() {
 	Route::any('favourites', array('uses' => 'favourites@index'));
 
 	// Users
-	Route::get('users/(:num)', array('uses' => 'users@view'));
-	Route::post('users/(:num)', array('uses' => 'users@update'));
+	Route::any('users/profile', array('uses' => 'users@profile'));
 });
 
 /**

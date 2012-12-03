@@ -32,3 +32,10 @@ Services.factory('User', ['$resource', function($resource) {
 	  destroy: { method: 'DELETE' }
   });
 }]);
+
+// User profile resource
+Services.factory('Profile', ['$resource', function($resource) {
+	return $resource('/users/profile', {}, {
+	  destroy: { method: 'DELETE' }
+  });
+}]);
