@@ -60,7 +60,7 @@ Laravel\Autoloader::$aliases = $aliases;
 
 Autoloader::map(array(
 	'Base_Controller' => path('app').'controllers/base.php',
-	'Base_Model' => path('app').'models/base.php'
+	'Data\\Base_Model' => path('app').'models/base.php'
 ));
 
 /*
@@ -77,6 +77,10 @@ Autoloader::map(array(
 Autoloader::directories(array(
 	path('app').'models',
 	path('app').'libraries',
+));
+
+Autoloader::namespaces(array(
+	'Data' => path('app').'models'
 ));
 
 /*

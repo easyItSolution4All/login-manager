@@ -1,4 +1,5 @@
 <?php
+
 class Sessions_Controller extends Base_Controller
 {
 	/**

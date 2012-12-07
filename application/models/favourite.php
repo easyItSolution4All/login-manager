@@ -1,11 +1,13 @@
 <?php
-class Favourite extends Eloquent
+namespace Data;
+
+class Favourite extends \Eloquent
 {
 	public function user() {
-		return $this->belongs_to('User');
+		return $this->belongs_to('Data\\User');
 	}
 
 	public function login() {
-		return $this->belongs_to('Login');
+		return $this->belongs_to('Data\\Login');
 	}
 }

@@ -12,14 +12,20 @@ function LoginsListCtrl($scope, $rootScope, $http, Login, Client) {
 	};
 
 	$scope.setPass = function() {
-		var phrase = this.login.project_id + this.login.name;
-		var pass = CryptoJS.AES.decrypt(angular.fromJson(this.login.password), phrase).toString(CryptoJS.enc.Utf8);
+		var l = this.login;
+		var phrase = l.project_id + l.name;
+		var pass = CryptoJS.AES.decrypt(angular.fromJson(l.password), phrase).toString(CryptoJS.enc.Utf8);
 
 		var clip = new ZeroClipboard.Client();
 
 		clip.setText(pass);
 		clip.setHandCursor(true);
-		clip.glue('loginPass' + this.login.id);
+		clip.glue('loginPass' + l.id);
+
+		// let the server know someone accessed the password
+		clip.addEventListener('onComplete', function() {
+			$http.post('/logins/access/', { id: l.id });
+		});
 	};
 
 	$scope.reset = function() {

@@ -1,4 +1,7 @@
 <?php
+use \Data\Login;
+use \Data\Log;
+
 class Logins_Controller extends Base_Controller
 {
 	public function get_index()
@@ -25,6 +28,21 @@ class Logins_Controller extends Base_Controller
 	public function delete_index($id) {
 		$login = Login::find($id);
 		if ($login) $login->delete();
+	}
+
+	/**
+	 * This method is purely for logging user access
+	 * to logins and their credentials.
+	 */
+	public function post_access() {
+		$data = Input::json();
+		$login = Login::with(array('project', 'project.client'))->where_id($data->id)->first();
+
+		$log = new Log;
+		$log->type = 'access';
+		$log->user_id = Auth::user()->id;
+		$log->message =Auth::user()->name . ' accessed "' . $login->name . '" from client "'.$login->project->client->name.'"';
+		$log->save();
 	}
 
 	/**

@@ -1,4 +1,6 @@
 <?php
+use Data;
+
 class Favourites_Controller extends Base_Controller
 {
 	public function post_index()

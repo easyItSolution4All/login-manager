@@ -1,4 +1,6 @@
 <?php
+use Data;
+
 class Users_Controller extends Base_Controller
 {
 	public function get_index()
@@ -13,7 +15,7 @@ class Users_Controller extends Base_Controller
 	public function get_profile() {
 		return Response::eloquent(User::where_id(Auth::user()->id)->first(array('email', 'name')));
 	}
-
+	
 	/**
 	 * For saving the profile information entered by a user
 	 */

@@ -56,6 +56,7 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('logins/(:num)', array('uses' => 'logins@view'));
 	Route::post('logins/(:num)', array('uses' => 'logins@update'));
 	Route::delete('logins/(:num)', array('uses' => 'logins@index'));
+	Route::post('logins/access', array('uses' => 'logins@access'));
 	
 	// Favourites
 	Route::any('favourites', array('uses' => 'favourites@index'));

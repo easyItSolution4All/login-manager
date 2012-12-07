@@ -381,19 +381,19 @@ abstract class Model {
 		}
 
 		$this->fire_event('saving');
-
+		
 		// If the model exists, we only need to update it in the database, and the update
 		// will be considered successful if there is one affected row returned from the
 		// fluent query instance. We'll set the where condition automatically.
 		if ($this->exists)
 		{
 			$query = $this->query()->where(static::$key, '=', $this->get_key());
-
+			
 			$result = $query->update($this->get_dirty()) === 1;
 
 			if ($result) $this->fire_event('updated');
 		}
-
+		
 		// If the model does not exist, we will insert the record and retrieve the last
 		// insert ID that is associated with the model. If the ID returned is numeric
 		// then we can consider the insert successful.
