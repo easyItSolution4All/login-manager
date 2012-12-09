@@ -3,8 +3,7 @@ class Logins_Controller extends Base_Controller
 {
 	public function get_index()
 	{
-		$logins = Login::with(array('reference', 'project', 'project.client'))->where_null('deleted_at')->get();
-		return Response::eloquent($logins);
+		return Response::eloquent(Login::recent());
 	}
 	
 	public function get_view($id) {
@@ -19,7 +18,9 @@ class Logins_Controller extends Base_Controller
 	
 	public function post_index()
 	{
-		Login::create($this->_data());
+		$login = Login::create($this->_data());
+		$login->login_id = $login->id; // set login id for future grouping requirements
+		$login->save();
 	}
 
 	public function delete_index($id) {
