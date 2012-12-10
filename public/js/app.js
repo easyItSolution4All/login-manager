@@ -110,7 +110,8 @@ App.run(function($rootScope, $routeParams, $location, $http){
 		{value: 'ssh', text: 'SSH'},
 		{value: 'mysql', text: 'MySQL'},
 		{value: 'panel', text: 'Server Control Panel'},
-		{value: 'service', text: 'Third-Party Service'}
+		{value: 'service', text: 'Third-Party Service'},
+		{value: 'other', text: 'Other'}
 	];
 	
 	$rootScope.user = {};
