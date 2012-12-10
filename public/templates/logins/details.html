@@ -1,0 +1,61 @@
+<div ng-show="activeTab == 'details'" class="forms">
+	<form method="post" ng-submit="saveLogin(this)">
+		<p>
+			<strong>PROJECT</strong><br />
+			<select name="project_id" class="medium" ng-model="login.project_id" ng-options="p.id as p.name for p in projects">
+				<option value=""></option>
+			</select>
+		</p>
+		<p>
+			<strong>LOGIN NAME</strong><br />
+			<input type="text" name="name" class="medium" ng-model="login.name" required />
+		</p>
+		<p>
+			<strong>REFERENCES</strong> <span class="hint">(select a previous login if this login references another in any way)</span><br />
+			<select name="login_id" class="small" ng-model="login.login_id" ng-options="l.id as l.name for l in logins">
+				<option value=""></option>
+			</select>
+		</p>
+		<div ng-hide="login.login_id">
+			<p>
+				<strong>TYPE</strong> <span class="hint">(select what type of login this record is for)</span><br />
+				<select name="type" class="small" ng-model="login.type" ng-options="l.value as l.text for l in types" ng-required="!login.login_id">
+					<option value="">Select login type</option>
+				</select>
+			</p>
+			<p>
+				<strong>LOCATION</strong><br />
+				<span id="locationProtocol">{{login.type | setProtocol}}</span><input type="text" name="location" class="small" ng-model="login.location" ng-required="!login.login_id" />
+			</p>
+			<p ng-show="ifMysql()">
+				<strong>DATABASE</strong><br />
+				<input type="text" name="database" class="small" ng-model="login.database" ng-required="!login.login_id && login.type == 'mysql'" />
+			</p>
+			<p ng-show="ifMysql()">
+				<strong>PORT</strong><br />
+				<input type="text" name="port" class="small" ng-model="login.port" />
+			</p>
+			<p>
+				<strong>LOGIN</strong> <span class="hint">(user login credentials)</span><br />
+				<input type="text" name="login" class="small" ng-model="login.login" ng-required="!login.login_id" />
+			</p>
+			<p>
+				<strong>PASSWORD</strong><br />
+				<input type="password" name="password" class="small" ng-model="login.password" ng-required="!login.login_id && action == 'edit'" />
+			</p>
+			<p>
+				<strong>CONFIRM PASSWORD</strong> <span class="hint">(enter password again)</span><br />
+				<input type="password" name="password_confirm" class="small" ng-model="login.password_confirm" ng-required="login.password && action == 'edit'" />
+			</p>
+			<p>
+				<strong>NOTES</strong><br />
+				<textarea type="text" name="notes" class="large" ng-model="client.notes" rows="5"></textarea>
+			</p>
+		</div>
+
+		<p>
+			<input type="button" class="button cancel rounded" value="CANCEL" ng-click="go('/logins')" />
+			<input type="submit" class="button continue rounded" value="SAVE" />
+		</p>
+	</form>
+</div>

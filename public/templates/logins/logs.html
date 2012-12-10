@@ -1,0 +1,16 @@
+<div ng-show="activeTab == 'logs' && login.logs">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_main">
+		<thead>
+			<tr>
+				<th>LOG</th>
+				<th>DATE/TIME</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="l in login.logs">
+			<tr ng-class-even="'even'">
+				<td>{{l.message}}</td>
+				<td>{{l.created_at}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
