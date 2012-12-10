@@ -1,5 +1,5 @@
 <?php
-use Data;
+use \Data;
 
 class Users_Controller extends Base_Controller
 {

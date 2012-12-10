@@ -18,9 +18,13 @@ class Base_Model extends \Eloquent
 	 * access to before and after save methods.
 	 */
 	public function save() {
+		// we save this information before saving, because as soon as the
+		// object is created on the database, this evaluates to true.
+		$exists = $this->exists;
+		
 		$this->before_save();
 		parent::save();
-		$this->after_save($this->exists);
+		$this->after_save($exists);
 	}
 
 	// Default methods for overloading

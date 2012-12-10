@@ -47,6 +47,7 @@ function LoginsCreateCtrl($scope, $rootScope, $location, Login, Project) {
 	$scope.types = $rootScope.loginTypes;
 	$scope.projects = Project.query();
 	$scope.logins = Login.query();
+	$scope.activeTab = 'details';
 
 	$scope.saveLogin = function(scope) {
 		_saveLogin(scope, $location);
@@ -61,11 +62,15 @@ function LoginsEditCtrl($scope, $rootScope, $location, $routeParams, Login, Proj
 		data.password = '';
 	});
 	
+	$scope.activeTab = 'details';
 	$scope.action = 'EDIT';
 	$scope.types = $rootScope.loginTypes;
 	$scope.projects = Project.query();
 	$scope.logins = Login.query();
 
+	$scope.setTab = function(tab) {
+		$scope.activeTab = tab;
+	}
 	$scope.saveLogin = function(scope) {
 		_saveLogin(scope, $location);
 	};
@@ -78,6 +83,11 @@ function _saveLogin(scope, $location) {
 	var phrase = scope.login.project_id + scope.login.name;
 	scope.login.password = (scope.login.password) ?  CryptoJS.AES.encrypt(scope.login.password, phrase) : '';
 	
+	// clean up the object before saving
+	if (scope.login.versions) delete scope.login.versions;
+	if (scope.login.accesses) delete scope.login.accesses;
+	if (scope.login.logs) delete scope.login.logs;
+
 	var result = scope.login.$save({},
 		function() {
 			$location.path('/logins');

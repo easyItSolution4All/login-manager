@@ -102,6 +102,7 @@ th.login-type { width: 150px }
 th.location { width: 200px }
 th.password { width: 75px }
 th.fav { width: 16px; }
+th.version { width: 20px }
 td.home-login div { float: left; width: 50% }
 
 .gray td { background-color:#f7f7f7 }
@@ -123,3 +124,8 @@ td.home-login div { float: left; width: 50% }
 
 /* Form stuff */
 input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid { border: 1px solid #ff0000 }
+
+/* Tabs */
+ul.tabs { overflow: visible; border-bottom: 1px solid #ccc; height: 30px; margin-bottom: 20px; line-height: 2em }
+	ul.tabs li { float: left; cursor: pointer; border: 1px solid #ccc; border-bottom: none; padding: 1px 10px; margin-right: 5px; color: #ccc }
+	ul.tabs li.active { background: #fff; padding: 2px 10px 0; color: #464646 }

@@ -6,14 +6,15 @@ class Logins_Controller extends Base_Controller
 {
 	public function get_index()
 	{
-		$logins = Login::with(array('reference', 'project', 'project.client'))->where_null('deleted_at')->get();
-		return Response::eloquent($logins);
+		return Response::eloquent(Login::recent());
 	}
 	
 	public function get_view($id) {
-		return Response::eloquent(Login::find($id));
+		$login = Login::with(array('logs', 'versions'))->where_id($id)->first();
+
+		return Response::eloquent($login);
 	}
-	
+
 	public function post_update($id) {
 		$login = Login::find($id);
 		$login->fill($this->_data());
@@ -22,7 +23,9 @@ class Logins_Controller extends Base_Controller
 	
 	public function post_index()
 	{
-		Login::create($this->_data());
+		$login = Login::create($this->_data());
+		$login->login_id = $login->id; // set login id for future grouping requirements
+		$login->save();
 	}
 
 	public function delete_index($id) {
@@ -38,10 +41,12 @@ class Logins_Controller extends Base_Controller
 		$data = Input::json();
 		$login = Login::with(array('project', 'project.client'))->where_id($data->id)->first();
 
+		// Save the new log data for the Login access
 		$log = new Log;
-		$log->type = 'access';
+		$log->type = 'login-access';
+		$log->foreign_id = $login->id;
 		$log->user_id = Auth::user()->id;
-		$log->message =Auth::user()->name . ' accessed "' . $login->name . '" from client "'.$login->project->client->name.'"';
+		$log->message = Auth::user()->name . ' accessed "' . $login->name . '" from client "'.$login->project->client->name.'".';
 		$log->save();
 	}
 

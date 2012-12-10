@@ -15,7 +15,7 @@ class Log extends Base_Model
 	public function set_details($details) {
 		if (!is_array($details)) return;
 
-		$this->set_attribute('details', serialize($details));
+		$this->set_attribute('details', json_encode($details));
 	}
 
 	/**
@@ -25,6 +25,6 @@ class Log extends Base_Model
 	 * @return array
 	 */
 	public function get_details() {
-		return unserialize($this->get_attribute('details'));
+		return json_decode($this->get_attribute('details'));
 	}
 }
