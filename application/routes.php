@@ -63,6 +63,10 @@ Route::group(array('before' => 'auth'), function() {
 
 	// Users
 	Route::any('users/profile', array('uses' => 'users@profile'));
+
+	// Versioning
+	Route::delete('versions/(:num)', array('uses' => 'versions@index'));
+	Route::post('versions/revert/(:num)', array('uses' => 'versions@revert'));
 });
 
 /**

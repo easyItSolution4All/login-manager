@@ -13,19 +13,24 @@ function LoginsListCtrl($scope, $rootScope, $http, Login, Client) {
 
 	$scope.setPass = function() {
 		var l = this.login;
-		var phrase = l.project_id + l.name;
-		var pass = CryptoJS.AES.decrypt(angular.fromJson(l.password), phrase).toString(CryptoJS.enc.Utf8);
 
-		var clip = new ZeroClipboard.Client();
+		// Only instantiate a ZeroClipboard client if one hasn't already been instantiated
+		if (!l.clip && l.password) {
+			var phrase = l.project_id + l.name;
 
-		clip.setText(pass);
-		clip.setHandCursor(true);
-		clip.glue('loginPass' + l.id);
+			var pass = CryptoJS.AES.decrypt(angular.fromJson(l.password), phrase).toString(CryptoJS.enc.Utf8);
+			
+			l.clip = new ZeroClipboard.Client();
+			
+			l.clip.setText(pass);
+			l.clip.setHandCursor(true);
+			l.clip.glue('loginPass' + l.id);
 
-		// let the server know someone accessed the password
-		clip.addEventListener('onComplete', function() {
-			$http.post('/logins/access/', { id: l.id });
-		});
+			// let the server know someone accessed the password
+			l.clip.addEventListener('onComplete', function() {
+				$http.post('/logins/access/', { id: l.id });
+			});
+		}
 	};
 
 	$scope.reset = function() {
@@ -57,7 +62,7 @@ function LoginsCreateCtrl($scope, $rootScope, $location, Login, Project) {
 	}
 }
 
-function LoginsEditCtrl($scope, $rootScope, $location, $routeParams, Login, Project) {
+function LoginsEditCtrl($scope, $rootScope, $location, $http, $routeParams, Login, Project) {
 	$scope.login = Login.get({id: $routeParams.loginId}, function(data) {
 		data.password = '';
 	});
@@ -76,7 +81,28 @@ function LoginsEditCtrl($scope, $rootScope, $location, $routeParams, Login, Proj
 	};
 	$scope.ifMysql = function() {
 		return $scope.login.type == 'mysql';
-	}
+	};
+	$scope.deleteVersion = function(event) {
+		event.stopPropagation();
+		event.preventDefault();
+
+		var response = confirm('Are you sure you want to remove this item?');
+		
+		if (response) {
+			$scope.login.versions.splice(this.$index, 1);
+			$http.delete('/versions/' + this.v.id, {});
+		}
+	};
+	$scope.revert = function(event) {
+		event.stopPropagation();
+		event.preventDefault();
+
+		var response = confirm('Are you sure you want to revert the login to this version?');
+		
+		if (response) {
+			$http.post('/versions/revert/' + this.v.id, {});
+		}
+	};
 }
 
 function _saveLogin(scope, $location) {

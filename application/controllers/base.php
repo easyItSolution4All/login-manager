@@ -29,10 +29,12 @@ class Base_Controller extends Controller
 	 * Fetches and converts any JSON input to an array that is usable
 	 * by any models throughout the system. This helps when saving data.
 	 *
+	 * @param array $input. If not provided, method will default to Input::json() for data source.
 	 * @return array
 	 */
-	protected function _data() {
-		return $this->_get_vars(Input::json());
+	protected function _data($input = array()) {
+		if (empty($input)) $input = Input::json();
+		return $this->_get_vars($input);
 	}
 
 	/**

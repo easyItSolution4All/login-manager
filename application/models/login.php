@@ -30,7 +30,7 @@ class Login extends Base_Model
 	 * Returns a list of accesses for a given login
 	 */
 	public function logs() {
-		return $this->has_many('Data\\Log', 'foreign_id')->where_in('type', array('login', 'login-access'));
+		return $this->has_many('Data\\Log', 'foreign_id')->where_in('type', array('login', 'login-access'))->order_by('created_at', 'desc');
 	}
 
 	/**
@@ -39,18 +39,18 @@ class Login extends Base_Model
 	 * for updating records, not new ones (obviously there is
 	 * no data available for new login records).
 	 */
-	protected function before_save() {
-		if ($this->exists and $this->dirty()) {
+	protected function before_save($exists, $original) {
+		if ($exists and $this->dirty()) {
 			$data = array(
 				'foreign_id' => $this->id,
 				'type' => 'login',
-				'data' => json_encode($this->to_array())
+				'data' => json_encode($original)
 			);
 
 			Version::create($data);
 		}
 	}
-	
+
 	/**
 	 * Saves a record to the Log table, letting admins know
 	 * when/where/if a login has been created or modfied
@@ -58,7 +58,7 @@ class Login extends Base_Model
 	 * 
 	 * @param boolean $new_record
 	 */
-	protected function after_save($exists) {
+	protected function after_save($exists, $original) {
 		$message = \Auth::user()->name . (!$exists ? ' created a new login.' : ' updated an existing login.');
 
 		Log::create(array(

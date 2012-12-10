@@ -45,7 +45,7 @@
 						<td><a href="/logins/edit/{{login.id}}" title="References: {{login.reference.name}}">{{login.name}}</a></td>
 						<td ng-bind-html-unsafe="login.reference.location | usableLocation:login"></td>
 						<td>{{login.reference.login}}</td>
-						<td>* * * * * * <img src="/img/copy.png" width="16" height="16" ng-mouseover="setPass()" ng-click="copyPass()" id="loginPass{{login.reference.id}}" /></td>
+						<td><div ng-show="login.reference.password.length">* * * * * * <img src="/img/copy.png" width="16" height="16" ng-mouseover="setPass()" ng-click="copyPass()" id="loginPass{{login.reference.id}}" /></div></td>
 						<td><a href="/clients/edit/{{login.project.client_id}}">{{login.project.client.name}}</a></td>
 						<td><a href="/logins/delete/{{login.id}}" ng-click="delete($event)"><img src="/img/delete.png" /></a></td>
 					</tr>
@@ -54,7 +54,7 @@
 						<td><a href="/logins/edit/{{login.id}}">{{login.name}}</a></td>
 						<td ng-bind-html-unsafe="login.location | usableLocation:login"></td>
 						<td>{{login.login}}</td>
-						<td>* * * * * * <img src="/img/copy.png" width="16" height="16" ng-mouseover="setPass()" ng-click="copyPass()" id="loginPass{{login.id}}" /></td>
+						<td><div ng-show="login.password.length">* * * * * * <img src="/img/copy.png" width="16" height="16" ng-mouseover="setPass()" ng-click="copyPass()" id="loginPass{{login.id}}" /></div></td>
 						<td><a href="/clients/edit/{{login.project.client_id}}">{{login.project.client.name}}</a></td>
 						<td><a href="/logins/delete/{{login.id}}" ng-click="delete($event)"><img src="/img/delete.png" /></a></td>
 					</tr>

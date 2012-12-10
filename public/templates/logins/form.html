@@ -79,22 +79,24 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_main">
 				<thead>
 					<tr>
+						<th class="redo"></th>
 						<th class="version">#</th>
 						<th>NAME</th>
 						<th>LOCATION</th>
 						<th>LOGIN</th>
 						<th>CREATED</th>
-						<th></th>
+						<th class="delete"></th>
 					</tr>
 				</thead>
 				<tbody ng-repeat="v in login.versions">
 					<tr ng-class-even="'even'">
+						<td><a href="/versions/revert/{{v.id}}" ng-click="revert($event)"><img src="/img/redo.png" title="Revert" /></a></td>
 						<td>{{login.versions.length - $index}}</td>
 						<td>{{v.data.name}}</td>
 						<td ng-bind-html-unsafe="v.data.location | usableLocation:v.data"></td>
 						<td>{{v.data.login}}</td>
 						<td>{{v.created_at}}</td>
-						<td><a href="/versions/delete/{{v.id}}" ng-click="delete($event)"><img src="/img/delete.png" /></a></td>
+						<td><a href="/versions/delete/{{v.id}}" ng-click="deleteVersion($event)"><img src="/img/delete.png" /></a></td>
 					</tr>
 				</tbody>
 			</table>
