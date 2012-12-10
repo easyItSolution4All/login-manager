@@ -25,7 +25,7 @@ class Login extends Base_Model
 	public function versions() {
 		return $this->has_many('Data\\Version','foreign_id')->where('type','=', 'login')->order_by('created_at', 'desc');
 	}
-
+	
 	/**
 	 * Returns a list of accesses for a given login
 	 */
@@ -46,7 +46,7 @@ class Login extends Base_Model
 				'type' => 'login',
 				'data' => json_encode($original)
 			);
-
+			
 			Version::create($data);
 		}
 	}
