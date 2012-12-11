@@ -17,7 +17,7 @@ class Create_Users_Table {
 			$table->timestamps();
 		});
 		
-		User::create(array('email' => 'kirk@tectonicdigital.com.au', 'password' => Hash::make('0ff1c3'), 'name' => 'Kirk Bushell'));
+		\Data\User::create(array('email' => 'kirk@tectonicdigital.com.au', 'password' => Hash::make('0ff1c3'), 'name' => 'Kirk Bushell'));
 	}
 
 	/**

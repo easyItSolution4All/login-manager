@@ -50,9 +50,11 @@ function LoginsCreateCtrl($scope, $rootScope, $location, Login, Project) {
 	$scope.login.port = 3306; // default port value
 	$scope.action = 'CREATE';
 	$scope.types = $rootScope.loginTypes;
-	$scope.projects = Project.query();
 	$scope.logins = Login.query();
 	$scope.activeTab = 'details';
+
+	// Retrieves projects for select
+	_projectsForSelect(Project, $scope);
 
 	$scope.saveLogin = function(scope) {
 		_saveLogin(scope, $location);
@@ -70,8 +72,10 @@ function LoginsEditCtrl($scope, $rootScope, $location, $http, $routeParams, Logi
 	$scope.activeTab = 'details';
 	$scope.action = 'EDIT';
 	$scope.types = $rootScope.loginTypes;
-	$scope.projects = Project.query();
 	$scope.logins = Login.query();
+
+	// Retrieves projects for select
+	_projectsForSelect(Project, $scope);
 
 	$scope.setTab = function(tab) {
 		$scope.activeTab = tab;
@@ -122,4 +126,15 @@ function _saveLogin(scope, $location) {
 			console.log('nup');
 		}
 	);
+}
+
+// Retrieves the projects for select and then formats the data
+// for the angular Select object.
+function _projectsForSelect(Project, scope) {
+	Project.query({}, function(data) {
+		for (var i = 0; i < data.length; i++)
+			data[i].name = data[i].client_name + ' - ' + data[i].name;
+
+		scope.projects = data;
+	});
 }

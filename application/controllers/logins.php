@@ -24,8 +24,6 @@ class Logins_Controller extends Base_Controller
 	public function post_index()
 	{
 		$login = Login::create($this->_data());
-		$login->login_id = $login->id; // set login id for future grouping requirements
-		$login->save();
 	}
 
 	public function delete_index($id) {

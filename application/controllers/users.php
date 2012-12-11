@@ -26,7 +26,10 @@ class Users_Controller extends Base_Controller
 		if ($user) {
 			if (!empty($data['password'])) {
 				$user->password = \Hash::make($data['password']);
+				unset($data['password']);
 			}
+
+			unset($data['password_confirm']);
 
 			$user->fill($data);
 			$user->save();
