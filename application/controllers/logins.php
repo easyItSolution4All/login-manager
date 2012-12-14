@@ -57,12 +57,14 @@ class Logins_Controller extends Base_Controller
 	 */
 	protected function _data($input = array()) {
 		$data = parent::_data($input);
+
 		if (!empty($data['password'])) {
 			$data['password'] = json_encode($data['password']);
 		}
 		else {
 			unset($data['password']);
 		}
+		
 		unset($data['password_confirm']);
 		return $data;
 	}
